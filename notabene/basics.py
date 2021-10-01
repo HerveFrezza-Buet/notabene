@@ -151,7 +151,20 @@ class Layout(Formula):
         def make_table(a, ls):
             max_length = max([len(l) for l in ls])
             res = '\\begin{array}{' + a*max_length + '} '
-            lines_str = [' & '.join([str(to(e)) for e in l]) + ' & ' * (max_length - len(l)) for l in ls]
+            lines_str = []
+            for l in ls:
+                if len(l) == 0:
+                    lines_str.append(' & ' * max_length)
+                else:
+                    emptys = max_length - len(l)
+                    line = ' & '.join([str(to(e)) for e in l[:-1]])
+                    if emptys == 0:
+                        line += ' & ' + str(to(l[-1]))
+                    else:
+                        if len(l) > 1:
+                            line += ' & '
+                        line += '\multicolumn{' + str(emptys + 1) + '}{' + a + '}{' + str(to(l[-1])) + '}'
+                    lines_str.append(line)
             res += ' \\\\ '.join(lines_str)
             res += ' \\end{array}'
             return res
