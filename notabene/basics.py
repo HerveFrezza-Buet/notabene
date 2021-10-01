@@ -118,13 +118,49 @@ def to(expr):
             return [to(e) for e in l]
         else:
             return Symbol(str(expr))
+    if isinstance(expr, list):
+        return Formula([to(e) for e in expr],
+                       lambda args : '\\left(' + ','.join([str(arg) for arg in args]) + '\\right)')
 
+def text(msg):
+    return Formula([msg],
+                   lambda args : '\\mbox{' + msg + '}')
 class Seq(Formula):
     def __init__(self, *exprs):
         super().__init__([to(expr) for expr in exprs], lambda args : ','.join([str(arg) for arg in args]))
 
 def seq(*exprs):
     return Seq(*exprs)
+
+class Cat(Formula):
+    def __init__(self, *exprs):
+        super().__init__([to(expr) for expr in exprs], lambda args : ''.join(['{' + str(arg) + '}' for arg in args]))
+
+def cat(*exprs):
+    return Cat(*exprs)
+
+class Kat(Formula):
+    def __init__(self, *exprs):
+        super().__init__([to(expr) for expr in exprs], lambda args : '\\;'.join(['{' + str(arg) + '}' for arg in args]))
+
+def kat(*exprs):
+    return Kat(*exprs)
+
+class Layout(Formula):
+    def __init__(self, align, lines):
+        def make_table(a, ls):
+            max_length = max([len(l) for l in ls])
+            res = '\\begin{array}{' + a*max_length + '} '
+            lines_str = [' & '.join([str(to(e)) for e in l]) + ' & ' * (max_length - len(l)) for l in ls]
+            res += ' \\\\ '.join(lines_str)
+            res += ' \\end{array}'
+            return res
+        super().__init__(lines,
+                         lambda args : make_table(align, args))
+    
+def layout(*lines):
+    return Layout(lines[0], lines[1:])
+
 
 class Function:
     def __init__(self, name):
