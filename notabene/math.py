@@ -3,6 +3,7 @@ from . import basics
 pi  = basics.Symbol('\\pi')
 i   = basics.Symbol('\\mathrm{i}')
 e   = basics.Symbol('\\mathrm{e}')
+infinity = basics.Symbol('\\infty')
 
 N   = basics.Symbol('\\mathbb{N}')
 Z   = basics.Symbol('\\mathbb{Z}')
@@ -19,6 +20,14 @@ def iteration(symbol, args):
     elif len(args) == 3:
         return basics.Formula([basics.to(symbol)]+[basics.to(arg) for arg in args],
                               lambda args : str(args[0]) + '_{' + str(args[1]) + '}^{' + str(args[2]) +'}{' + str(args[3]) +'}')
+
+def fact(expr):
+    return basics.Formula([basics.to(expr)],
+                          lambda args : str(args[0]) + '!')
+
+def belongs(elem, the_set):
+    return basics.Formula([elem, the_set],
+                          lambda args : str(args[0]) + '\in' + str(args[1]))
 
 def sum(*args):
     return iteration('\\sum', args)

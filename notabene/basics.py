@@ -1,3 +1,14 @@
+displaystyle = False
+
+def set_displaystyle(value):
+    global displaystyle
+    displaystyle = value
+
+def insert_dsp():
+    if displaystyle :
+        return '\\displaystyle'
+    else:
+        return ''
 
 class Formula:
     def __init__(self, args, to_latex):
@@ -58,12 +69,8 @@ class Formula:
     def __neg__(self):
         return Formula([self], lambda args : '-{' + str(args[0]) + '}')
     
-    def eq(self, other):
-        return InfixOp('=', self, other)
-    def __eq__(self, other):
-        return self.eq(other)
-    def __req__(self, other):
-        return to(other).eq(self)
+    def __pos__(self):
+        return Formula([self], lambda args : '+{' + str(args[0]) + '}')
     
     def truediv(self, other):
         return Frac(self, other)
@@ -78,6 +85,48 @@ class Formula:
         return self.power(other)
     def __rpow__(self, other):
         return to(other).power(self)
+    
+    def lt(self, other):
+        return InfixOp('<', self, other)
+    def __lt__(self, other):
+        return self.lt(other)
+    def __rlt__(self, other):
+        return to(other).lt(self)
+    
+    def le(self, other):
+        return InfixOp('\\leq', self, other)
+    def __le__(self, other):
+        return self.le(other)
+    def __rle__(self, other):
+        return to(other).le(self)
+    
+    def eq(self, other):
+        return InfixOp('=', self, other)
+    def __eq__(self, other):
+        return self.eq(other)
+    def __req__(self, other):
+        return to(other).eq(self)
+
+    def ne(self, other):
+        return InfixOp('\\neq', self, other)
+    def __ne__(self, other):
+        return self.ne(other)
+    def __rne__(self, other):
+        return to(other).ne(self)
+    
+    def gt(self, other):
+        return InfixOp('>', self, other)
+    def __gt__(self, other):
+        return self.gt(other)
+    def __rgt__(self, other):
+        return to(other).gt(self)
+    
+    def ge(self, other):
+        return InfixOp('\\geq', self, other)
+    def __ge__(self, other):
+        return self.ge(other)
+    def __rge__(self, other):
+        return to(other).ge(self)
 
 def to(expr):
     if isinstance(expr, int) or isinstance(expr, float):
@@ -85,8 +134,9 @@ def to(expr):
     if isinstance(expr, Formula):
         return expr
     if isinstance(expr, str):
-        if len(expr.split()) != 1:
-            raise 'String "{}" cannot be converted to a formula'.format(expr)
+        l = expr.split()
+        if len(l) != 1:
+            return [to(e) for e in l]
         else:
             return Symbol(str(expr))
 
@@ -121,7 +171,7 @@ class InfixOp(Formula):
 class Frac(Formula):
     def __init__(self, num, denom):
         super().__init__([to(num), to(denom)],
-                         lambda args : '\\frac{' + str(num) + '}{' + str(denom) + '}')
+                         lambda args : insert_dsp() + '\\frac{' + str(num) + '}{' + str(denom) + '}')
 
 
 class Exponent(Formula):

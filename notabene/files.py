@@ -1,6 +1,6 @@
 from . import basics
 
-class Defs:
+class defs:
     def __init__(self, path):
         self.path = path;
         self.prefix = None
