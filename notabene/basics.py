@@ -86,49 +86,28 @@ class Formula:
     def __rpow__(self, other):
         return to(other).power(self)
     
-    def lt(self, other):
-        return InfixOp('<', self, other)
     def __lt__(self, other):
-        return self.lt(other)
-    def __rlt__(self, other):
-        return to(other).lt(self)
+        return InfixOp('<', self, other)
     
-    def le(self, other):
-        return InfixOp('\\leq', self, other)
     def __le__(self, other):
-        return self.le(other)
-    def __rle__(self, other):
-        return to(other).le(self)
+        return InfixOp('\\leq', self, other)
     
-    def eq(self, other):
-        return InfixOp('=', self, other)
     def __eq__(self, other):
-        return self.eq(other)
-    def __req__(self, other):
-        return to(other).eq(self)
+        return InfixOp('=', self, other)
 
-    def ne(self, other):
-        return InfixOp('\\neq', self, other)
     def __ne__(self, other):
-        return self.ne(other)
-    def __rne__(self, other):
-        return to(other).ne(self)
+        return InfixOp('\\neq', self, other)
     
-    def gt(self, other):
-        return InfixOp('>', self, other)
     def __gt__(self, other):
-        return self.gt(other)
-    def __rgt__(self, other):
-        return to(other).gt(self)
+        return InfixOp('>', self, other)
     
-    def ge(self, other):
-        return InfixOp('\\geq', self, other)
     def __ge__(self, other):
-        return self.ge(other)
-    def __rge__(self, other):
-        return to(other).ge(self)
+        return InfixOp('\\geq', self, other)
+    
 
 def to(expr):
+    if isinstance(expr, type(...)):
+        return Symbol('\\ldots')
     if isinstance(expr, int) or isinstance(expr, float):
         return Symbol(str(expr))
     if isinstance(expr, Formula):

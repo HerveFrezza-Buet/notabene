@@ -33,12 +33,37 @@ sigma      = nb.to('\\sigma')
 e = 1 + sigma**2 / (-(x+y)**(x-y) + x*y)
 formulas.append(e)
 
+euler = nb.math.e**(nb.math.i * nb.math.pi) + 1 == 0
+formulas.append(euler)
+
 # nb.seq build a formula that is a sequence of others.
 formulas.append(nb.seq(x*y, x^y, x**y, x@y, x@(y,sigma), x == y))
 
 sum1 = nb.math.sum(i==0, i <= n, 1/nb.math.fact(i) * x**i)
 sum2 = nb.math.sum(nb.math.belongs(i, nb.math.N), 1 / i**2)
-formulas.append(nb.seq(sum1, sum2))
+sum3 = nb.math.prod(nb.math.belongs(i, nb.math.N), 1 / i**2)
+formulas.append(nb.seq(sum1, sum2, sum3))
+
+# You can define functions.
+fname = nb.to('f')@(nb.seq(sigma, i), nb.math.pi)
+f = nb.fun(fname)
+formulas.append(f(sum1+sum2))
+
+# There are nice ways to define sets
+formulas.append('A' == nb.math.set_ext(1, 2, ..., n))
+B = nb.math.set_def(nb.math.belongs(x, nb.math.Q), f(x+3) > 38)
+formulas.append(nb.to('B') == B)
+indic_b = nb.math.indic(B)
+formulas.append(indic_b(y))
+
+# Min, max, ...
+where = nb.math.belongs(y, B)
+what = nb.fun('g')(y**2)
+formulas.append(nb.math.max(where, what))
+formulas.append(nb.math.min(where, what))
+formulas.append(nb.math.argmax(where, what))
+formulas.append(nb.math.argmin(where, what))
+
 
 
 # Now, let us print our formulas in formulas.tex
