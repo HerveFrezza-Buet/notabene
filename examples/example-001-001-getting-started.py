@@ -24,6 +24,10 @@ formulas.append(euler)
 # nb.seq builds a formula that is a sequence of others.
 formulas.append(nb.seq(x*y, x^y, x**y, x@y, x@(y,sigma), x == y))
 
+# Quantifiers are available
+formulas.append(nb.math.forall(x, x**2 >= 0))
+formulas.append(nb.math.exists(x, x**2 == 0))
+
 # nb.cat concatenates formulas, nb.kat does the same with spacing.
 formulas.append(nb.cat(x**2, y**3, x**n))
 formulas.append(nb.kat(x**2, y**3, x**n))

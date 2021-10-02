@@ -64,7 +64,7 @@ class defs:
                 f.write(k)
                 f.write(' \\\\\n')
             if len(self.content) > 0:
-                kc= self.content[-1]
+                k = self.content[-1]
                 f.write('\\mbox{\\tt \\textbackslash ' + k + '} & : & \\')
                 f.write(k)
                 f.write(' \n')

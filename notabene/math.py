@@ -19,6 +19,14 @@ def fact(expr):
     return basics.Formula([basics.to(expr)],
                           lambda args : str(args[0]) + '!')
 
+def forall(expr1, expr2):
+    return basics.Formula([basics.to(expr1), basics.to(expr2)],
+                          lambda args : '\\forall ' + '{' + str(expr1) + '},\\; {' + str(expr2) +'}')
+
+def exists(expr1, expr2):
+    return basics.Formula([basics.to(expr1), basics.to(expr2)],
+                          lambda args : '\\exists ' + '{' + str(expr1) + '},\\; {' + str(expr2) +'}')
+    
 def sum(*args):
     return iteration('\\sum', args)
 
