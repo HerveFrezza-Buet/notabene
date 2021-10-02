@@ -70,4 +70,7 @@ class defs:
                 f.write(' \n')
             f.write('\\end{eqnarray*}\n')
             f.write('\\end{document}\n')
+        print()
+        print('Cheatsheet {} generated.'.format(name))
+        print()
     
