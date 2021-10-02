@@ -7,6 +7,10 @@ infinity = basics.Symbol('\\infty')
 
 exp = basics.fun('\exp')
 
+def oplist(opstring, operands):
+    return basics.Formula([basics.to(op) for op in operands],
+                          lambda args : (' {} '.format(opstring)).join(['{' + str(op) + '}' for op in operands]))
+
 def iteration(symbol, args):
     if len(args) == 2:
         return basics.Formula([basics.to(symbol)]+[basics.to(arg) for arg in args],

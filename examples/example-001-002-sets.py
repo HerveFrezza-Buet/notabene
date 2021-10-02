@@ -21,10 +21,13 @@ with nb.files.defs('sets.tex') as defs:
     
     where = nb.sets.isin(y, B)
     what = nb.fun('g')(y**2)
-    defs['Max']    = (nb.sets.max(where, what))
-    defs['Min']    = (nb.sets.min(where, what))
-    defs['Argmax'] = (nb.sets.argmax(where, what))
-    defs['Argmin'] = (nb.sets.argmin(where, what))
+    defs['Max']    = nb.sets.max(where, what)
+    defs['Min']    = nb.sets.min(where, what)
+    defs['Argmax'] = nb.sets.argmax(where, what)
+    defs['Argmin'] = nb.sets.argmin(where, what)
+
+    defs['Union'] = nb.sets.union(x,y,z)
+    defs['Inter'] = nb.sets.inter(x,y,z)
     
 
     defs.cheatsheet() 

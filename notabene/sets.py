@@ -35,3 +35,9 @@ def argmin(who, what):
 
 def argmax(who, what):
     return math.iteration('\\mathop{\\mathrm{argmax}}', [who, what])
+
+def union(*elems):
+    return math.oplist('\\cup', elems)
+
+def inter(*elems):
+    return math.oplist('\\cap', elems)
