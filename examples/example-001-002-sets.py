@@ -7,14 +7,21 @@ with nb.files.defs('sets.tex') as defs:
     nb.set_displaystyle(True)
     defs.prefix = 'ex'
 
+    defs['Empty'] = nb.sets.empty
     defs['IsIn'] = nb.sets.isin(x, nb.sets.Z)
     defs['IsNotIn'] = nb.sets.isnotin(x, nb.sets.C)
+    defs['Subset'] = nb.sets.subset(x, nb.sets.C)
+    defs['Minus'] = nb.sets.minus(nb.sets.C, nb.sets.singleton(x))
     
     A = nb.sets.byext(1, 2, ..., n)
     B = nb.sets.bydef(nb.sets.isin(x, nb.sets.Q), f(x+3) > 38)
     
     defs['ByExt'] = 'A' == A         # Equality is reversed.
     defs['ByDef'] = nb.to('B') == B  # Order is ok.
+    defs['PowerSet'] = nb.sets.power(nb.sets.R)
+    defs['Functional'] = nb.sets.functional(nb.to('A'), nb.to('B'))
+    defs['Cartesian'] = nb.sets.isin([x, y, z],
+                                     nb.sets.cartesian(nb.to('A'), nb.to('B'), nb.sets.Q))
 
     indic_b = nb.sets.indic(B)
     defs['Indic'] = indic_b(y)
@@ -28,6 +35,11 @@ with nb.files.defs('sets.tex') as defs:
 
     defs['Union'] = nb.sets.union(x,y,z)
     defs['Inter'] = nb.sets.inter(x,y,z)
+
+    defs['UnionIter'] = nb.seq(nb.sets.Union(i==1, n, x@i),
+                               nb.sets.Union(nb.sets.subset(i,x), i)) 
+    defs['InterIter'] = nb.seq(nb.sets.Inter(i==1, n, x@i),
+                               nb.sets.Inter(nb.sets.subset(i,x), i)) 
     
 
     defs.cheatsheet() 

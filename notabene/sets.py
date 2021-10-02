@@ -6,6 +6,7 @@ Z   = basics.Symbol('\\mathbb{Z}')
 Q   = basics.Symbol('\\mathbb{Q}')
 R   = basics.Symbol('\\mathbb{R}')
 C   = basics.Symbol('\\mathbb{C}')
+empty =  basics.Symbol('\\emptyset')
 
 
 def byext(*elems):
@@ -15,12 +16,21 @@ def bydef(*elems):
     return basics.Formula(elems,
                           lambda args : '\\left\\{' + '\\; \\middle| \\; '.join([str(basics.to(arg)) for arg in args]) + '\\right\\}')
 
+def singleton(elem):
+    return byext(elem)
+
 def isin(elem, the_set):
-    return basics.Formula([elem, the_set],
-                          lambda args : str(basics.to(args[0])) + '\\in' + str(basics.to(args[1])))
+    return basics.InfixOp('\\in', elem, the_set)
+
+def subset(elem, the_set):
+    return basics.InfixOp('\\subset', elem, the_set)
+    
 def isnotin(elem, the_set):
-    return basics.Formula([elem, the_set],
-                          lambda args : str(basics.to(args[0])) + '\\notin' + str(basics.to(args[1])))
+    return basics.InfixOp('\\notin', elem, the_set)
+    
+def minus(set1, set2):
+    return basics.InfixOp('\\setminus', set1, set2)
+    
 def indic(the_set):
     return basics.fun(basics.Symbol('\\mathbb{1}')@basics.to(the_set))
 
@@ -41,3 +51,19 @@ def union(*elems):
 
 def inter(*elems):
     return math.oplist('\\cap', elems)
+
+def Union(*args):
+    return math.iteration('\\bigcup', args)
+
+def Inter(*args):
+    return math.iteration('\\bigcap', args)
+
+def power(the_set):
+    return basics.fun(basics.Symbol('{\\cal P}'))(the_set)
+
+def functional(a, b):
+    return b**a
+
+def cartesian(*elems):
+    return math.oplist('\\times', elems)
+

@@ -199,26 +199,26 @@ class Symbol(Formula):
 
 class InfixOp(Formula):
     def __init__(self, op, left, right):
-        super().__init__([to(left), to(right), to(op)],
-                         lambda args : '{' + str(left) + '} ' + str(op) + ' {' + str(right) + '}')
+        super().__init__([to(op), to(left), to(right)],
+                         lambda args : '{' + str(args[1]) + '} ' + str(args[0]) + ' {' + str(args[2]) + '}')
 
 class Frac(Formula):
     def __init__(self, num, denom):
         super().__init__([to(num), to(denom)],
-                         lambda args : insert_dsp() + '\\frac{' + str(num) + '}{' + str(denom) + '}')
+                         lambda args : insert_dsp() + '\\frac{' + str(args[0]) + '}{' + str(args[1]) + '}')
 
 
 class Exponent(Formula):
     def __init__(self, expr, exponent):
         super().__init__([to(expr), to(exponent)],
-                         lambda args : '{' + str(expr) + '}^{' + str(exponent) + '}')
+                         lambda args : '{' + str(args[0]) + '}^{' + str(args[1]) + '}')
         
 class Index(Formula):
     def __init__(self, expr, index):
         super().__init__([to(expr), to(index)],
-                         lambda args : '{' + str(expr) + '}_{' + str(index) + '}')
+                         lambda args : '{' + str(args[0]) + '}_{' + str(args[1]) + '}')
         
 class IndexExp(Formula):
     def __init__(self, expr, index, exponent):
         super().__init__([to(expr), to(index), to(exponent)],
-                         lambda args : '{' + str(expr) + '}_{' + str(index) + '}^{' + str(exponent) + '}')
+                         lambda args : '{' + str(args[0]) + '}_{' + str(args[1]) + '}^{' + str(args[2]) + '}')

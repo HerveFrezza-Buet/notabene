@@ -78,7 +78,7 @@ formulas.append(f(x) == eqs)
 
 # Now, let us print our formulas in formulas.tex
 
-with nb.files.defs('formulas.tex') as defs:
+with nb.files.defs('basics.tex') as defs:
     nb.set_displaystyle(True) # We set the displaystyle
     defs.prefix = 'ex'
     for idx, expr in enumerate(formulas):
