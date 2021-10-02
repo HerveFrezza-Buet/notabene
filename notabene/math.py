@@ -56,3 +56,8 @@ def left_system(elem) :
 def right_system(elem) : 
     return basics.Formula([elem],
                           lambda args : '\\left. ' + str(basics.to(args[0])) + ' \\right\}')
+
+def sqrt(elem):
+    return basics.Formula([elem],
+                          lambda args : '\\sqrt{ ' + str(basics.to(args[0])) + '}')
+    

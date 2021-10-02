@@ -3,6 +3,7 @@ from . import math
 from . import files
 from . import sets
 from . import diff
+from . import logical
 
 from .basics import set_displaystyle
 from .basics import to
@@ -12,4 +13,5 @@ from .basics import cat
 from .basics import kat
 from .basics import text
 from .basics import layout
+from .basics import define
 

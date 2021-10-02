@@ -222,3 +222,7 @@ class IndexExp(Formula):
     def __init__(self, expr, index, exponent):
         super().__init__([to(expr), to(index), to(exponent)],
                          lambda args : '{' + str(args[0]) + '}_{' + str(args[1]) + '}^{' + str(args[2]) + '}')
+
+def define(name, expr):
+    symb = Symbol('\\stackrel{\\mathrm{def}}{=}')
+    return kat(name, symb, expr)
