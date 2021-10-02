@@ -2,6 +2,7 @@ from . import basics
 from . import math
 from . import files
 from . import sets
+from . import diff
 
 from .basics import set_displaystyle
 from .basics import to
