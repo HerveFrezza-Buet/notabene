@@ -18,6 +18,10 @@ with nb.files.defs('sets.tex') as defs:
     
     defs['ByExt'] = 'A' == A         # Equality is reversed.
     defs['ByDef'] = nb.to('B') == B  # Order is ok.
+    defs['Ranges'] = nb.seq(nb.sets.range_cc(x, y, z),
+                            nb.sets.range_co(x, y, z),
+                            nb.sets.range_oc(x, y, z),
+                            nb.sets.range_oo(x, y, z))
     defs['PowerSet'] = nb.sets.power(nb.sets.R)
     defs['Functional'] = nb.sets.functional(nb.to('A'), nb.to('B'))
     defs['Cartesian'] = nb.sets.isin([x, y, z],
@@ -41,5 +45,4 @@ with nb.files.defs('sets.tex') as defs:
     defs['InterIter'] = nb.seq(nb.sets.Inter(i==1, n, x@i),
                                nb.sets.Inter(nb.sets.subset(i,x), i)) 
     
-
     defs.cheatsheet() 

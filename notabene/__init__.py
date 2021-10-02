@@ -4,6 +4,7 @@ from . import files
 from . import sets
 from . import diff
 from . import logical
+from . import proba
 
 from .basics import set_displaystyle
 from .basics import to

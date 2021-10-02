@@ -9,6 +9,22 @@ C   = basics.Symbol('\\mathbb{C}')
 empty =  basics.Symbol('\\emptyset')
 
 
+def range_cc(*elems):
+    return basics.Formula(elems,
+                          lambda args : '\\left[' + str(basics.Seq(*elems)) + '\\right]')
+
+def range_co(*elems):
+    return basics.Formula(elems,
+                          lambda args : '\\left[' + str(basics.Seq(*elems)) + '\\right[')
+
+def range_oc(*elems):
+    return basics.Formula(elems,
+                          lambda args : '\\left]' + str(basics.Seq(*elems)) + '\\right]')
+
+def range_oo(*elems):
+    return basics.Formula(elems,
+                          lambda args : '\\left]' + str(basics.Seq(*elems)) + '\\right[')
+
 def byext(*elems):
     return basics.Formula(elems,
                           lambda args : '\\left\\{' + str(basics.Seq(*elems)) + '\\right\\}')
