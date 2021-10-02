@@ -20,8 +20,6 @@ def name_of(idx) :
 # first, you need to build formulas from scratch. This is what nb.to
 # does.
 
-nb.set_displaystyle(True) # We set the displaystyle
-
 x, y, n, i = nb.to('x y n i')
 two        = nb.to(2)
 sigma      = nb.to('\\sigma')
@@ -103,13 +101,14 @@ formulas.append(f(x) == eqs)
 
 
 # Now, let us print our formulas in formulas.tex
+
 with nb.files.defs('formulas.tex') as defs:
+    nb.set_displaystyle(True) # We set the displaystyle
     defs.prefix = 'ex'
     for idx, expr in enumerate(formulas):
         defs[name_of(idx)] = expr
+    defs.cheatsheet() # generates a latex cheetsheet that you can compile.
 
-# Now you can have a look as example-001-001-getting-started.tex, and
-# run latex to see the effect.
 
 
 
