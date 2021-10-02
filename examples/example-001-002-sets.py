@@ -1,6 +1,7 @@
 import notabene as nb
 
-x, y, z = nb.to('x y z')
+x, y, z, i, n = nb.to('x y z i n')
+f, g, h       = nb.fun('f g h')
 
 with nb.files.defs('sets.tex') as defs:
     nb.set_displaystyle(True)

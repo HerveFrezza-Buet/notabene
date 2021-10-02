@@ -29,8 +29,8 @@ formulas.append(nb.cat(x**2, y**3, x**n))
 formulas.append(nb.kat(x**2, y**3, x**n))
 
 sum1 = nb.math.sum(i==0, i <= n, 1/nb.math.fact(i) * x**i)
-sum2 = nb.math.sum(nb.math.belongs(i, nb.math.N), 1 / i**2)
-sum3 = nb.math.prod(nb.math.belongs(i, nb.math.N), 1 / i**2)
+sum2 = nb.math.sum(nb.sets.isin(i, nb.sets.N), 1 / i**2)
+sum3 = nb.math.prod(nb.sets.isin(i, nb.sets.N), 1 / i**2)
 formulas.append(nb.seq(sum1, sum2, sum3))
 
 # You can define functions.

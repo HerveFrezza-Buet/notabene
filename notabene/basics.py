@@ -184,6 +184,12 @@ class Function:
                        lambda args : '{' + str(args[0]) + '}\\left(' + str(Seq(*(args[1:]))) + '\\right)')
 
 def fun(name):
+    if isinstance(name, str):
+        names = name.split()
+        if len(names) > 1:
+            return [fun(e) for e in names]
+        else:
+            return Function(name)
     return Function(name)
                     
 
