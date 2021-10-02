@@ -3,19 +3,6 @@ import notabene as nb
 # Let us store here the formulas we will print.
 formulas = []
 
-# This function generates a name from a integer, but usually, you will
-# identify your equation by an informative name. Names have to be
-# compliant with latex syntax.
-def name_of(idx) :
-    a = idx % 26 + 65
-    idx = idx // 26
-    b = idx % 26 + 65
-    idx = idx // 26
-    c = idx % 26 + 65
-    return chr(c) + chr(b) + chr(a)
-    
-
-
 # notabene handles formulas, that can be combined, reused, etc... So
 # first, you need to build formulas from scratch. This is what nb.to
 # does.
@@ -50,21 +37,6 @@ formulas.append(nb.seq(sum1, sum2, sum3))
 fname = nb.to('f')@(nb.seq(sigma, i), nb.math.pi)
 f = nb.fun(fname)
 formulas.append(f(sum1+sum2))
-
-# There are nice ways to define sets
-formulas.append('A' == nb.math.set_ext(1, 2, ..., n))
-B = nb.math.set_def(nb.math.belongs(x, nb.math.Q), f(x+3) > 38)
-formulas.append(nb.to('B') == B)
-indic_b = nb.math.indic(B)
-formulas.append(indic_b(y))
-
-# Min, max, ...
-where = nb.math.belongs(y, B)
-what = nb.fun('g')(y**2)
-formulas.append(nb.math.max(where, what))
-formulas.append(nb.math.min(where, what))
-formulas.append(nb.math.argmax(where, what))
-formulas.append(nb.math.argmin(where, what))
 
 # Groups and tuples are made from lists... this may happen implicitely
 v = nb.to([n+1/n]) # explicit grouping formula from list.
@@ -106,7 +78,7 @@ with nb.files.defs('formulas.tex') as defs:
     nb.set_displaystyle(True) # We set the displaystyle
     defs.prefix = 'ex'
     for idx, expr in enumerate(formulas):
-        defs[name_of(idx)] = expr
+        defs[chr(65 + idx)] = expr # we use exA, exB, exC... as names.
     defs.cheatsheet() # generates a latex cheetsheet that you can compile.
 
 
