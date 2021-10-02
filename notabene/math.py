@@ -14,10 +14,10 @@ def oplist(opstring, operands):
 def iteration(symbol, args):
     if len(args) == 2:
         return basics.Formula([basics.to(symbol)]+[basics.to(arg) for arg in args],
-                              lambda args : str(args[0]) + '_{' + str(args[1]) + '}{' + str(args[2]) +'}')
+                              lambda args : basics.insert_dsp() + str(args[0]) + '_{' + str(args[1]) + '}{' + str(args[2]) +'}')
     elif len(args) == 3:
         return basics.Formula([basics.to(symbol)]+[basics.to(arg) for arg in args],
-                              lambda args : str(args[0]) + '_{' + str(args[1]) + '}^{' + str(args[2]) +'}{' + str(args[3]) +'}')
+                              lambda args : basics.insert_dsp() + str(args[0]) + '_{' + str(args[1]) + '}^{' + str(args[2]) +'}{' + str(args[3]) +'}')
 
 def fact(expr):
     return basics.Formula([basics.to(expr)],

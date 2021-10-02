@@ -21,3 +21,32 @@ def dfun(*elem):
 def Dfun(*elem):
     return basics.fun(Dfrac(*elem))
 
+def G(elem):
+    grad = basics.Symbol('\\nabla')
+    return basics.cat(grad, elem)
+
+def Gfun(*elem):
+    return basics.fun(G(*elem))
+
+
+def _integral(bounds):
+    if isinstance(bounds, tuple):
+        return basics.Formula([basics.to(bounds[0]), basics.to(bounds[1])],
+                              lambda args : basics.insert_dsp() + '\\int_{' + str(args[0]) + '}^{' + str(args[1]) + '}')
+    else:
+        return basics.Formula([basics.to(bounds)],
+                              lambda args : basics.insert_dsp() + '\\int_{' + str(args[0]) + '}')
+                              
+def integral(ints, expr, diffs):
+    if isinstance(ints, list):
+        integrals = ints
+    else:
+        integrals = [ints]
+    line = [_integral(i) for i in integrals]
+    line.append(basics.to(expr))
+    if isinstance(diffs, list):
+        line.append(d(*diffs))
+    else:
+        line.append(d(diffs))
+    return basics.cat(*line)
+
