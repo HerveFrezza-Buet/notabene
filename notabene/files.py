@@ -17,14 +17,11 @@ class defs:
             key = '{}{}'.format(self.prefix, at)
         else:
             key = at
-        expr = str(basics.to(value))
-        command = '\\newcommand{\\' + key + '}[0]{' + expr + '}\n'
-        self.f.write('\\newcommand{\\')
-        self.f.write(key)
-        self.f.write('}[0]{')
-        self.f.write(expr)
-        self.f.write('}\n')
-        self.content.append(key)
+        v = basics.to(value)
+        expr = str(v)
+        command = '\\newcommand{\\' + key + '}[' + str(v.max_argnum) + ']{' + expr + '}\n'
+        self.f.write(command)
+        self.content.append((key, v.max_argnum))
     
 
     def __enter__(self):
@@ -37,6 +34,12 @@ class defs:
             print(f'exc_type: {exc_type}')
             print(f'exc_value: {exc_value}')
             print(f'exc_traceback: {exc_traceback}')
+
+    def __arg_calls(self, num):
+        return ''.join(['{\\mathbf{' + str(i+1) + '}}' for i in range(num)])
+    
+    def __arg_print(self, num):
+        return ''.join(['\\{' + str(i+1) + '\\}' for i in range(num)])
 
     def cheatsheet(self):
         name = Path(self.path.stem + '-cheatsheet.tex')
@@ -59,14 +62,16 @@ class defs:
             f.write('\\hrule\n')
             f.write('\\vspace{5mm}\n')
             f.write('\\begin{eqnarray*}\n')
-            for k in self.content[:-1]:
-                f.write('\\mbox{\\tt \\textbackslash ' + k + '} & : & \\')
+            for k, num in self.content[:-1]:
+                f.write('\\mbox{\\tt \\textbackslash ' + k + '}' + self.__arg_print(num) + ' & : & \\')
                 f.write(k)
+                f.write(self.__arg_calls(num))
                 f.write(' \\\\\n')
             if len(self.content) > 0:
-                k = self.content[-1]
-                f.write('\\mbox{\\tt \\textbackslash ' + k + '} & : & \\')
+                k, num = self.content[-1]
+                f.write('\\mbox{\\tt \\textbackslash ' + k + '}' + self.__arg_print(num) + ' & : & \\')
                 f.write(k)
+                f.write(self.__arg_calls(num))
                 f.write(' \n')
             f.write('\\end{eqnarray*}\n')
             f.write('\\end{document}\n')

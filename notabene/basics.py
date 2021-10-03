@@ -14,6 +14,10 @@ class Formula:
     def __init__(self, args, to_latex):
         self.args = args
         self.to_latex = to_latex
+        self.max_argnum = 0
+        for arg in args:
+            if isinstance(arg, Formula) :
+                self.max_argnum = max(self.max_argnum, arg.max_argnum)
         
     def __str__(self):
         return self.to_latex(self.args)
@@ -125,6 +129,15 @@ def to(expr):
 def text(msg):
     return Formula([msg],
                    lambda args : '\\mbox{' + msg + '}')
+
+def arg(num):
+    return Arg(num)
+
+class Arg(Formula):
+    def __init__(self, num):
+        super().__init__([], lambda args : '#' + str(num))
+        self.max_argnum = num
+    
 class Seq(Formula):
     def __init__(self, *exprs):
         super().__init__([to(expr) for expr in exprs], lambda args : ',\\;'.join([str(arg) for arg in args]))
