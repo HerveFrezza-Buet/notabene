@@ -7,6 +7,7 @@ from . import logical
 from . import proba
 
 from .basics import set_displaystyle
+from .basics import set_product_mode
 from .basics import arg
 from .basics import to
 from .basics import fun

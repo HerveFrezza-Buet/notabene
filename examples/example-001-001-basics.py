@@ -18,6 +18,20 @@ with nb.files.defs('basics.tex') as defs:
     defs.prefix = 'ex'
     idx = 0
 
+    nb.set_product_mode(None) #default
+    defs[chr(65 + idx)] = x*y
+    idx += 1
+    
+    nb.set_product_mode('.') 
+    defs[chr(65 + idx)] = x*y
+    idx += 1
+    
+    nb.set_product_mode('x') 
+    defs[chr(65 + idx)] = x*y
+    idx += 1
+    
+    nb.set_product_mode(None)
+    
     e = 1 + sigma**2 / (-(x+y)**(x-y) + x*y)
     defs[chr(65 + idx)] = e
     idx += 1
@@ -88,7 +102,7 @@ with nb.files.defs('basics.tex') as defs:
     defs[chr(65 + idx)] = layout
     idx += 1
 
-    # This can be mixed nicely for a systel of equations.
+    # This can be mixed nicely for a system of equations.
     eqs = nb.math.left_system(nb.layout('l',
                                         [x+1, nb.text('if'), x > 0],
                                         [x-1, nb.text('if'), x < 0],

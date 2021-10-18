@@ -1,8 +1,13 @@
 displaystyle = False
+product_mode = None
 
 def set_displaystyle(value):
     global displaystyle
     displaystyle = value
+    
+def set_product_mode(value):
+    global product_mode
+    product_mode = value
 
 def insert_dsp():
     if displaystyle :
@@ -30,7 +35,10 @@ class Formula:
         return to(other).add(self)
     
     def mul(self, other):
-        return Formula([self, to(other)], lambda args : '{{' + str(args[0]) + '}{' + str(args[1]) + '}}')
+        select = {None : Cat([self, other]),
+                  '.' : InfixOp('.', self, other),
+                  'x' : InfixOp('\\times', self, other)}
+        return select[product_mode]
     def __mul__(self, other):
         return self.mul(other)
     def __rmul__(self, other):
