@@ -45,7 +45,7 @@ with nb.files.defs('basics.tex') as defs:
 
     # nb.seq builds a formula that is a sequence of others.
     defs[chr(65 + idx)] = nb.seq(x*y, x^y, x**y, x@y, x@(y,sigma), x == y)
-    idx += 1
+    idx += 1    
 
     # Quantifiers are available
     defs[chr(65 + idx)] = nb.math.forall(x, x**2 >= 0)
@@ -83,6 +83,11 @@ with nb.files.defs('basics.tex') as defs:
     defs[chr(65 + idx)] = xy_t
     idx += 1
 
+    # Nice attributes are available
+    e = nb.to([x+y])
+    defs[chr(65 + idx)] = nb.seq(e.bar, e.inv, e.T, e.star, e.plus, e.minus)
+    idx += 1
+    
     # Delimiters can be added around formulas (the previous is for parentheses).
     x_2 = x ** 2
     defs[chr(65 + idx)] = nb.seq(nb.math.abs(x_2),

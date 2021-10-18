@@ -5,6 +5,7 @@ from . import sets
 from . import diff
 from . import logical
 from . import proba
+from . import linalg
 
 from .basics import set_displaystyle
 from .basics import set_product_mode
@@ -18,3 +19,7 @@ from .basics import text
 from .basics import layout
 from .basics import define
 
+
+from .linalg import set_vector_mode
+from .linalg import set_dot_product_mode
+from .linalg import dots

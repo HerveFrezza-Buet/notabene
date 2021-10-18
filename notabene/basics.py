@@ -26,6 +26,22 @@ class Formula:
         
     def __str__(self):
         return self.to_latex(self.args)
+
+    def __getattr__(self, name):
+        if name == 'T':
+            return Transpose(self)
+        if name == 'inv':
+            return Inverse(self)
+        if name == 'bar':
+            return Overline(self)
+        if name == 'star':
+            return Star(self)
+        if name == 'plus':
+            return Plus(self)
+        if name == 'minus':
+            return Minus(self)
+        else:
+            raise AttributeError
     
     def add(self, other):
         return InfixOp('+', self, other)
@@ -35,7 +51,7 @@ class Formula:
         return to(other).add(self)
     
     def mul(self, other):
-        select = {None : Cat([self, other]),
+        select = {None : Cat(self, other),
                   '.' : InfixOp('.', self, other),
                   'x' : InfixOp('\\times', self, other)}
         return select[product_mode]
@@ -145,6 +161,31 @@ class Arg(Formula):
     def __init__(self, num):
         super().__init__([], lambda args : '#' + str(num))
         self.max_argnum = num
+        
+class Transpose(Formula):
+    def __init__(self, expr):
+        super().__init__([to(expr)], lambda args : str(args[0]) + '^{\\texttt{T}}')
+        
+class Star(Formula):
+    def __init__(self, expr):
+        super().__init__([to(expr)], lambda args : str(args[0]) + '^\star')
+        
+class Plus(Formula):
+    def __init__(self, expr):
+        super().__init__([to(expr)], lambda args : str(args[0]) + '^+')
+
+class Minus(Formula):
+    def __init__(self, expr):
+        super().__init__([to(expr)], lambda args : str(args[0]) + '^-')
+        
+class Inverse(Formula):
+    def __init__(self, expr):
+        super().__init__([to(expr)], lambda args : str(args[0]) + '^{-1}')
+        
+class Overline(Formula):
+    def __init__(self, expr):
+        super().__init__([to(expr)], lambda args : '\\overline{' + str(args[0]) +'}')
+
     
 class Seq(Formula):
     def __init__(self, *exprs):
@@ -175,7 +216,9 @@ class Layout(Formula):
             lines_str = []
             for l in ls:
                 if len(l) == 0:
-                    lines_str.append(' & ' * max_length)
+                    lines_str.append(' & ' * (max_length - 1))
+                elif max_length == 1:
+                    lines_str.append(str(to(l[0])))
                 else:
                     emptys = max_length - len(l)
                     line = ' & '.join([str(to(e)) for e in l[:-1]])
@@ -189,7 +232,12 @@ class Layout(Formula):
             res += ' \\\\ '.join(lines_str)
             res += ' \\end{array}'
             return res
-        super().__init__(lines,
+        def list_of_line(l):
+            if isinstance(l, list) :
+                return l
+            else:
+                return [l]
+        super().__init__([list_of_line(l) for l in lines],
                          lambda args : make_table(align, args))
     
 def layout(*lines):
