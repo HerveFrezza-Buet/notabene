@@ -157,6 +157,7 @@ def text(msg):
 def arg(num):
     return Arg(num)
 
+
 class Arg(Formula):
     def __init__(self, num):
         super().__init__([], lambda args : '#' + str(num))
@@ -295,3 +296,7 @@ class IndexExp(Formula):
 def define(name, expr):
     symb = Symbol('\\stackrel{\\mathrm{def}}{=}')
     return kat(name, symb, expr)
+
+
+def approx(a, b):
+    return InfoxOp(Symbol('\simeq'), a, b)
