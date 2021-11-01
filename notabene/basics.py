@@ -299,4 +299,4 @@ def define(name, expr):
 
 
 def approx(a, b):
-    return InfoxOp(Symbol('\simeq'), a, b)
+    return InfixOp(Symbol('\simeq'), a, b)

@@ -18,6 +18,7 @@ from .basics import kat
 from .basics import text
 from .basics import layout
 from .basics import define
+from .basics import approx
 
 
 from .linalg import set_vector_mode

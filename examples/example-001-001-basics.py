@@ -42,6 +42,8 @@ with nb.files.defs('basics.tex') as defs:
     defs[new_name()] = euler
 
     defs[new_name()] = nb.define(nb.math.i, nb.math.sqrt(-1))
+    
+    defs[new_name()] = nb.approx(nb.math.pi, 3.14)
 
     # nb.seq builds a formula that is a sequence of others.
     defs[new_name()] = nb.seq(x*y, x^y, x**y, x@y, x@(y,sigma), x == y)    

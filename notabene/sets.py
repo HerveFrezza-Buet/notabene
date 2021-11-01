@@ -85,5 +85,5 @@ def cartesian(*elems):
 
 def card(the_set):
     return basics.Formula([the_set],
-                          lambda args : '\\left\\| ' + str(basics.to(args[0])) + ' \\right\\|')
+                          lambda args : '\\left| ' + str(basics.to(args[0])) + ' \\right|')
 

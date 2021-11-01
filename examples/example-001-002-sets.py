@@ -26,6 +26,7 @@ with nb.files.defs('sets.tex') as defs:
     defs['Functional'] = nb.sets.functional(nb.to('A'), nb.to('B'))
     defs['Cartesian'] = nb.sets.isin([x, y, z],
                                      nb.sets.cartesian(nb.to('A'), nb.to('B'), nb.sets.Q))
+    defs['Cardinal'] = nb.sets.card(nb.sets.empty) == 0
 
     indic_b = nb.sets.indic(B)
     defs['Indic'] = indic_b(y)
