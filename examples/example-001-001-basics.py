@@ -23,7 +23,6 @@ def new_name():
 with nb.files.defs('basics.tex') as defs:
     nb.set_displaystyle(True) # We set the displaystyle
     defs.prefix = 'ex'
-    idx = 0
 
     nb.set_product_mode(None) #default
     defs[new_name()] = x*y
