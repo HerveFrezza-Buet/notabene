@@ -21,19 +21,20 @@ def new_name():
     return name
 
 with nb.files.defs('basics.tex') as defs:
-    nb.set_displaystyle(True) # We set the displaystyle
+    nb.config.push('display style', True) # We set the displaystyle
     defs.prefix = 'ex'
 
-    nb.set_product_mode(None) #default
+    nb.config.push('product', None) #default
     defs[new_name()] = x*y
     
-    nb.set_product_mode('.') 
+    nb.config.push('product', '.') 
     defs[new_name()] = x*y
+    nb.config.pop() # pop the last config setting.
+    # nb.config.pop('product') pops the last 'product' config setting. Similar to pop() here.
     
-    nb.set_product_mode('x') 
+    nb.config.push('product', 'x') 
     defs[new_name()] = x*y
-    
-    nb.set_product_mode(None)
+    nb.config.pop()
     
     e = 1 + sigma**2 / (-(x+y)**(x-y) + x*y)
     defs[new_name()] = e

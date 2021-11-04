@@ -4,7 +4,7 @@ x, y, z, i, n = nb.to('x y z i n')
 f, g, h       = nb.fun('f g h')
 
 with nb.files.defs('diff.tex') as defs:
-    nb.set_displaystyle(True)
+    nb.config.push('display style', True) 
     defs.prefix = 'ex'
 
     # differentials

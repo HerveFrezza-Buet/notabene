@@ -4,7 +4,7 @@ mu, sigma, X, Y, Z, A, B, C = nb.to('\\mu \\sigma X Y Z A B C')
 
 
 with nb.files.defs('probas.tex') as defs:
-    nb.set_displaystyle(True)
+    nb.config.push('display style', True) 
     defs.prefix = 'ex'
 
     the_set = nb.sets.range_cc(0, 1)

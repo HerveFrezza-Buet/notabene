@@ -4,7 +4,7 @@ import notabene as nb
 # arguments. The nb.arg(i) formula is the placeholder for argument i.
 
 i, n = nb.to('i n')
-serie = nb.sets.byext(nb.arg(1)@0, ..., nb.arg(1)@i, ..., nb.arg(1)@n)@(nb.sets.isin(n, nb.arg(2)))
+serie = nb.sets.byext(nb.arg(1)@0, ..., nb.arg(1)@i, ..., nb.arg(1)@n)@(nb.sets.isin(i, nb.arg(2)))
 
 
 with nb.files.defs('commands.tex') as defs:

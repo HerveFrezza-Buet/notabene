@@ -1,16 +1,7 @@
-displaystyle = False
-product_mode = None
-
-def set_displaystyle(value):
-    global displaystyle
-    displaystyle = value
-    
-def set_product_mode(value):
-    global product_mode
-    product_mode = value
+from . import config
 
 def insert_dsp():
-    if displaystyle :
+    if config.get('display style') :
         return '\\displaystyle'
     else:
         return ''
@@ -54,7 +45,7 @@ class Formula:
         select = {None : Cat(self, other),
                   '.' : InfixOp('.', self, other),
                   'x' : InfixOp('\\times', self, other)}
-        return select[product_mode]
+        return select[config.get('product')]
     def __mul__(self, other):
         return self.mul(other)
     def __rmul__(self, other):

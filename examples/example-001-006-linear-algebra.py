@@ -5,35 +5,40 @@ a, b    = nb.to('a b')
 
 
 with nb.files.defs('linalg.tex') as defs:
-    nb.set_displaystyle(True)
+    nb.config.push('display style', True)
     defs.prefix = 'ex'
 
     defs['Basics'] = nb.seq(A.T, A.inv, A.plus, nb.linalg.det(A), nb.linalg.trace(A))
 
-    nb.set_vector_mode(None) # default 
+    nb.config.push('vector', None) # default 
     x, y, z  = nb.linalg.vec('x y z')
     defs['VecNone'] = nb.seq(x, y, z, nb.linalg.vec(a+b))
+    nb.config.pop('vector') # Could have been nb.config.pop()
     
-    nb.set_vector_mode('bold')
+    nb.config.push('vector', 'bold') 
     xb, yb, zb  = nb.linalg.vec('x y z')
     defs['VecBold'] = nb.seq(xb, yb, zb, nb.linalg.vec(a+b))
+    nb.config.pop()
     
-    nb.set_vector_mode('->')
+    nb.config.push('vector', '->') 
     xa, ya, za  = nb.linalg.vec('x y z')
     defs['VecArrow'] = nb.seq(xa, ya, za, nb.linalg.vec(a+b))
+    nb.config.pop()
     
-    nb.set_vector_mode(None)
 
-    nb.set_dot_product_mode(None) # default
+    nb.config.push('dot product', None) # default 
     dot1 = nb.linalg.dot(xb, ya)
+    nb.config.pop('dot product') # Could have been nb.config.pop()
     
-    nb.set_dot_product_mode('.')
+    nb.config.push('dot product', '.') 
     dot2 = nb.linalg.dot(xb, ya)
+    nb.config.pop()
     
-    nb.set_dot_product_mode('<|>')
+    nb.config.push('dot product', '<|>')
     dot3 = nb.linalg.dot(xb, ya)
+    nb.config.pop()
     
-    nb.set_dot_product_mode('T') # Let is keep this
+    nb.config.push('dot product', 'T') # Let us keep this (we do not pop)
     dot4 = nb.linalg.dot(xb, ya)
 
     defs['DotProducts'] = nb.seq(dot1, dot2, dot3, dot4)

@@ -38,7 +38,7 @@ def enclose(what, below, above):
 #### We register some commands.
 
 with nb.files.defs('custom.tex') as defs:
-    nb.set_displaystyle(True) 
+    nb.config.push('display style', True)
     defs.prefix = 'vq'
     
     defs['DefaultUpdate'] = updating_rule(prototype, sample, rate)
