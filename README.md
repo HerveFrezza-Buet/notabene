@@ -5,9 +5,7 @@ notabene is a python library that handles your latex formulas... Indeed, we use 
 ## Installation
 
 ```
-git clone git@github.com:HerveFrezza-Buet/notabene.git
-cd notabene
-python3 setup.py install --user
+python3 -m pip install git+https://github.com/HerveFrezza-Buet/notabene
 ```
 
 ## Documentation
