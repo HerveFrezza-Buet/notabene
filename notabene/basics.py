@@ -31,6 +31,8 @@ class Formula:
             return Plus(self)
         if name == 'minus':
             return Minus(self)
+        if name == 'prime':
+            return Prime(self)
         else:
             raise AttributeError
     
@@ -161,6 +163,10 @@ class Transpose(Formula):
 class Star(Formula):
     def __init__(self, expr):
         super().__init__([to(expr)], lambda args : str(args[0]) + '^\star')
+        
+class Prime(Formula):
+    def __init__(self, expr):
+        super().__init__([to(expr)], lambda args : str(args[0]) + '\'')
         
 class Plus(Formula):
     def __init__(self, expr):

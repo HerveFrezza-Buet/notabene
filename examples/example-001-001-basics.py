@@ -46,6 +46,10 @@ with nb.files.defs('basics.tex') as defs:
     
     defs[new_name()] = nb.approx(nb.math.pi, 3.14)
 
+    # Nice attributes are available
+    e = nb.to([x+y])
+    defs[new_name()] = nb.seq(e.bar, e.inv, e.T, e.star, e.plus, e.minus, e.prime)
+
     # nb.seq builds a formula that is a sequence of others.
     defs[new_name()] = nb.seq(x*y, x^y, x**y, x@y, x@(y,sigma), x == y)    
 
@@ -76,10 +80,6 @@ with nb.files.defs('basics.tex') as defs:
     xy = [x, y, i, 3] # a list, not a formula.
     xy_t = xy**nb.text('hello world') # a list combined with a formula makes a formula.
     defs[new_name()] = xy_t
-
-    # Nice attributes are available
-    e = nb.to([x+y])
-    defs[new_name()] = nb.seq(e.bar, e.inv, e.T, e.star, e.plus, e.minus)
     
     # Delimiters can be added around formulas (the previous is for parentheses).
     x_2 = x ** 2
@@ -104,8 +104,11 @@ with nb.files.defs('basics.tex') as defs:
                                         [x-1, nb.text('if'), x < 0],
                                         [38, nb.text('otherwise')]))
     defs[new_name()] = f(x) == eqs
-
-    defs.cheatsheet() # This generates a latex cheetsheet that you can compile and display.
+    
+    # This generates a latex cheetsheet that you can compile and display.
+    defs.add_preamble('\\usepackage{color}') # You can add lines in the cheetsheet preamble.
+    defs.add_preamble('\\usepackage{listings}') 
+    defs.cheatsheet() 
 
 
 

@@ -10,6 +10,7 @@ class defs:
             self.path = Path(path)
         self.prefix = None
         self.content = []
+        self.preamble = []
 
     
     def __setitem__(self, at, value):
@@ -22,7 +23,9 @@ class defs:
         command = '\\newcommand{\\' + key + '}[' + str(v.max_argnum) + ']{' + expr + '}\n'
         self.f.write(command)
         self.content.append((key, v.max_argnum))
-    
+
+    def add_preamble(self, msg):
+        self.preamble.append(msg)
 
     def __enter__(self):
         self.f = open(self.path, 'w')
@@ -52,6 +55,11 @@ class defs:
             f.write('\\usepackage{amssymb}\n')
             f.write('\\usepackage{amsthm}\n')
             f.write('\\usepackage{mathdots}\n')
+            f.write('\n')
+            f.write('% Custom pramble\n')
+            for line in self.preamble:
+                f.write(line)
+                f.write('\n')
             f.write('\n')
             f.write('% Your commands come from that file\n')
             f.write('\\input{' + str(self.path) + '}\n')
