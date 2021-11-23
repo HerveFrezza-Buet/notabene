@@ -86,6 +86,7 @@ with nb.files.defs('basics.tex') as defs:
     defs[new_name()] = nb.seq(nb.math.abs(x_2),
                                  nb.math.norm(x_2),
                                  nb.math.matrix(x_2),
+                                 nb.math.brace(x_2),
                                  nb.math.left_system(x_2),
                                  nb.math.right_system(x_2))
 

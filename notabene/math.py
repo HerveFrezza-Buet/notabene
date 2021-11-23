@@ -49,6 +49,10 @@ def matrix(elem) :
     return basics.Formula([elem],
                           lambda args : '\\left[ ' + str(basics.to(args[0])) + ' \\right]')
 
+def brace(elem) : 
+    return basics.Formula([elem],
+                          lambda args : '\\left\{ ' + str(basics.to(args[0])) + ' \\right\}')
+
 def left_system(elem) : 
     return basics.Formula([elem],
                           lambda args : '\\left\{ ' + str(basics.to(args[0])) + ' \\right.')
