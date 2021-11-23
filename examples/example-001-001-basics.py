@@ -92,6 +92,7 @@ with nb.files.defs('basics.tex') as defs:
                                  nb.math.norm(x_2),
                                  nb.math.matrix(x_2),
                                  nb.math.brace(x_2),
+                                 nb.math.bracket(x_2),
                                  nb.math.left_system(x_2),
                                  nb.math.right_system(x_2))
 
