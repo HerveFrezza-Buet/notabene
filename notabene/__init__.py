@@ -15,6 +15,7 @@ from .basics import seq
 from .basics import cat
 from .basics import kat
 from .basics import text
+from .basics import rm
 from .basics import symbol
 from .basics import layout
 from .basics import define

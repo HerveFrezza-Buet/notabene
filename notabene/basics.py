@@ -144,8 +144,12 @@ def to(expr):
                        lambda args : '\\left(' + ','.join([str(arg) for arg in args]) + '\\right)')
 
 def text(msg):
-    return Formula([msg],
+    return Formula([],
                    lambda args : '\\mbox{' + msg + '}')
+
+def rm(msg):
+    return Formula([],
+                   lambda args : '\\mathrm{' + msg + '}')
 
 def arg(num):
     return Arg(num)

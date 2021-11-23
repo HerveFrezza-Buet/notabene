@@ -9,6 +9,7 @@ x, y, n, i = nb.to('x y n i')
 two        = nb.to(2)
 sigma      = nb.to('\\sigma')
 L          = nb.symbol('{\\cal L}') # builds a formula from a latex expression
+roman      = nb.rm('roman') # builds a formula using \mathrm
 
 # Then, basic operators can be used to combine formulas... let us
 # illustrate some of them and put some results in the file basics.tex.
@@ -26,6 +27,7 @@ with nb.files.defs('basics.tex') as defs:
     defs.prefix = 'ex'
     
     defs[new_name()] = L
+    defs[new_name()] = roman
     
     nb.config.push('product', None) #default
     defs[new_name()] = x*y
