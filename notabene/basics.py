@@ -297,3 +297,6 @@ def define(name, expr):
 
 def approx(a, b):
     return InfixOp(Symbol('\simeq'), a, b)
+
+def symbol(latex_expression):
+    return Symbol(latex_expression)

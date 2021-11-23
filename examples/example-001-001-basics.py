@@ -8,6 +8,7 @@ import notabene as nb
 x, y, n, i = nb.to('x y n i')
 two        = nb.to(2)
 sigma      = nb.to('\\sigma')
+L          = nb.symbol('{\\cal L}') # builds a formula from a latex expression
 
 # Then, basic operators can be used to combine formulas... let us
 # illustrate some of them and put some results in the file basics.tex.
@@ -23,7 +24,9 @@ def new_name():
 with nb.files.defs('basics.tex') as defs:
     nb.config.push('display style', True) # We set the displaystyle
     defs.prefix = 'ex'
-
+    
+    defs[new_name()] = L
+    
     nb.config.push('product', None) #default
     defs[new_name()] = x*y
     
