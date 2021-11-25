@@ -7,6 +7,7 @@ from . import diff
 from . import logical
 from . import proba
 from . import linalg
+from . import algo
 
 from .basics import arg
 from .basics import to
