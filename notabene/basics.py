@@ -127,6 +127,11 @@ class Formula:
     
 
 def to(expr):
+    if isinstance(expr, bool):
+        if expr:
+            return text('true')
+        else:
+            return text('false')
     if isinstance(expr, type(...)):
         return Symbol('\\ldots')
     if isinstance(expr, int) or isinstance(expr, float):

@@ -9,7 +9,7 @@ exp = basics.fun('\exp')
 
 def oplist(opstring, operands):
     return basics.Formula([basics.to(op) for op in operands],
-                          lambda args : (' {} '.format(opstring)).join(['{' + str(op) + '}' for op in operands]))
+                          lambda args : (' {} '.format(opstring)).join(['{' + str(op) + '}' for op in args]))
 
 def iteration(symbol, args):
     if len(args) == 2:

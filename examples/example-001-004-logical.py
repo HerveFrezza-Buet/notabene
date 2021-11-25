@@ -12,5 +12,6 @@ with nb.files.defs('logical.tex') as defs:
     defs['Equiv'] = nb.logical.equiv(A, B, C)
     defs['Not'] = nb.logical.neg(A)
     defs['Definition'] = nb.define(nb.logical.imply(A, B), nb.logical.disj(nb.logical.neg(A), B))
+    defs['Bool'] = nb.seq(nb.logical.conj(True, False), (nb.logical.neg(True) == False))
     
     defs.cheatsheet() 
