@@ -14,7 +14,7 @@ with nb.files.defs('sets.tex') as defs:
     defs['Minus'] = nb.sets.minus(nb.sets.C, nb.sets.singleton(x))
     
     A = nb.sets.byext(1, 2, ..., n)
-    B = nb.sets.bydef(nb.sets.isin(x, nb.sets.Q), f(x+3) > 38)
+    B = nb.sets.bydef(nb.sets.isin(x, nb.sets.Q), f(x+3) > 38, x <= 2)
     
     defs['ByExt'] = 'A' == A         # Equality is reversed.
     defs['ByDef'] = nb.to('B') == B  # Order is ok.
