@@ -148,6 +148,9 @@ def to(expr):
         return Formula([to(e) for e in expr],
                        lambda args : '\\left(' + ','.join([str(arg) for arg in args]) + '\\right)')
 
+def equal(a, b):
+    return InfixOp('=', a, b)
+
 def text(msg):
     return Formula([],
                    lambda args : '\\mbox{' + msg + '}')

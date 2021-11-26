@@ -28,6 +28,9 @@ with nb.files.defs('basics.tex') as defs:
     
     defs[new_name()] = L
     defs[new_name()] = roman
+
+    defs[new_name()] = L == roman # Makes an equality. You may encounter troubles with operand orders...
+    defs[new_name()] = nb.equal(L, roman) # ... so you can use this instead.
     
     nb.config.push('product', None) #default
     defs[new_name()] = x*y
