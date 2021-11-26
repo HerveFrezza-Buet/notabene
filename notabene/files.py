@@ -72,21 +72,21 @@ class defs:
             f.write('\\vspace{3mm}\n')
             f.write('\\hrule\n')
             f.write('\\vspace{5mm}\n')
-            f.write('\\begin{longtable}{l|cl}\n')
+            f.write('\\begin{longtable}{l|l}\n')
             for k, num in self.content[:-1]:
-                f.write('{\\tt \\textbackslash ' + k + '}' + self.__arg_print(num) + ' & ~ & $\\')
+                f.write('{\\tt \\textbackslash ' + k + '}' + self.__arg_print(num) + ' & $\\')
                 f.write(k)
                 f.write(self.__arg_calls(num))
                 f.write('$ \\\\\n')
             if len(self.content) > 0:
                 k, num = self.content[-1]
-                f.write('{\\tt \\textbackslash ' + k + '}' + self.__arg_print(num) + ' & ~ & $\\')
+                f.write('{\\tt \\textbackslash ' + k + '}' + self.__arg_print(num) + ' & $\\')
                 f.write(k)
                 f.write(self.__arg_calls(num))
                 f.write('$ \n')
             f.write('\\end{longtable}\n')
             f.write('\\end{document}\n')
         print()
-        print('Cheatsheet {} generated.'.format(name))
+        print('Cheatsheet {} generated. Be sure to compile twice to have aligned elements.'.format(name))
         print()
     
