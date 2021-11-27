@@ -2,7 +2,7 @@ import notabene as nb
 
 
 i = nb.to('i')
-with nb.files.defs('algo.tex') as defs:
+with nb.files.defs('001-008-algo.tex') as defs:
     nb.config.push('display style', True)
     defs.prefix = 'ex'
 

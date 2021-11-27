@@ -4,7 +4,7 @@ A, B, C = nb.to('A B C')
 a, b    = nb.to('a b')
 
 
-with nb.files.defs('linalg.tex') as defs:
+with nb.files.defs('001-007-linalg.tex') as defs:
     nb.config.push('display style', True)
     defs.prefix = 'ex'
 

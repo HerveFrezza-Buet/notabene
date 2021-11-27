@@ -7,7 +7,7 @@ i, n = nb.to('i n')
 serie = nb.sets.byext(nb.arg(1)@0, ..., nb.arg(1)@i, ..., nb.arg(1)@n)@(nb.sets.isin(i, nb.arg(2)))
 
 
-with nb.files.defs('commands.tex') as defs:
+with nb.files.defs('002-001-commands.tex') as defs:
     defs.prefix = 'ex'
     
     defs['Serie'] = serie

@@ -3,7 +3,7 @@ import notabene as nb
 x, y, z, i, n = nb.to('x y z i n')
 f, g, h       = nb.fun('f g h')
 
-with nb.files.defs('sets.tex') as defs:
+with nb.files.defs('001-003-sets.tex') as defs:
     nb.config.push('display style', True)
     defs.prefix = 'ex'
 

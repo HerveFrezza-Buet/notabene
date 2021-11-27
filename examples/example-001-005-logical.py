@@ -3,7 +3,7 @@ import notabene as nb
 A, B, C = nb.to('A B C')
 
 
-with nb.files.defs('logical.tex') as defs:
+with nb.files.defs('001-005-logical.tex') as defs:
     defs.prefix = 'ex'
 
     defs['And'] = nb.logical.conj(A, B, C)

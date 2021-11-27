@@ -15,7 +15,7 @@ roman      = nb.rm('roman') # builds a formula using \mathrm
 # illustrate some of them and put some results in the file basics.tex.
 
 
-with nb.files.defs('basics.tex') as defs:
+with nb.files.defs('001-001-basics.tex') as defs:
     nb.config.push('display style', True) # We set the displaystyle
     defs.prefix = 'ex'
     

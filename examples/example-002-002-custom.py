@@ -37,7 +37,7 @@ def enclose(what, below, above):
 
 #### We register some commands.
 
-with nb.files.defs('custom.tex') as defs:
+with nb.files.defs('002-002-custom.tex') as defs:
     nb.config.push('display style', True)
     defs.prefix = 'vq'
     

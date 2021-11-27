@@ -3,7 +3,7 @@ import notabene as nb
 mu, sigma, X, Y, Z, A, B, C = nb.to('\\mu \\sigma X Y Z A B C')
 
 
-with nb.files.defs('probas.tex') as defs:
+with nb.files.defs('001-006-probas.tex') as defs:
     nb.config.push('display style', True) 
     defs.prefix = 'ex'
 

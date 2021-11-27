@@ -4,7 +4,7 @@ import notabene as nb
 x, i, n = nb.to('x i n')
 x_2 = x**2
 
-with nb.files.defs('math.tex') as defs:
+with nb.files.defs('001-002-math.tex') as defs:
     nb.config.push('display style', True) # We set the displaystyle
     defs.prefix = 'ex'
     
