@@ -6,6 +6,8 @@ e   = basics.Symbol('\\mathrm{e}')
 infinity = basics.Symbol('\\infty')
 
 exp = basics.fun('\exp')
+min = basics.fun('\min')
+max = basics.fun('\max')
 
 def oplist(opstring, operands):
     return basics.Formula([basics.to(op) for op in operands],
@@ -68,4 +70,8 @@ def right_system(elem) :
 def sqrt(elem):
     return basics.Formula([elem],
                           lambda args : '\\sqrt{ ' + str(basics.to(args[0])) + '}')
+
+def root(elem, power):
+    return basics.Formula([elem, power],
+                          lambda args : '\\sqrt[{' + str(basics.to(args[1])) + '}]{ ' + str(basics.to(args[0])) + '}')
     

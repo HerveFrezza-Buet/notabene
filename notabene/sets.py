@@ -6,7 +6,8 @@ Z   = basics.Symbol('\\mathbb{Z}')
 Q   = basics.Symbol('\\mathbb{Q}')
 R   = basics.Symbol('\\mathbb{R}')
 C   = basics.Symbol('\\mathbb{C}')
-empty =  basics.Symbol('\\emptyset')
+Boolean  = basics.Symbol('\\mathbb{B}')
+empty    =  basics.Symbol('\\emptyset')
 
 
 def range_cc(*elems):

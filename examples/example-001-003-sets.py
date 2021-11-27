@@ -7,7 +7,7 @@ with nb.files.defs('sets.tex') as defs:
     nb.config.push('display style', True)
     defs.prefix = 'ex'
 
-    defs['Empty'] = nb.sets.empty
+    defs['Constants'] = nb.seq(nb.sets.empty, nb.sets.N, nb.sets.Z, nb.sets.Q, nb.sets.R, nb.sets.C, nb.sets.Boolean)
     defs['IsIn'] = nb.sets.isin(x, nb.sets.Z)
     defs['IsNotIn'] = nb.sets.isnotin(x, nb.sets.C)
     defs['Subset'] = nb.sets.subset(x, nb.sets.C)
@@ -16,8 +16,9 @@ with nb.files.defs('sets.tex') as defs:
     A = nb.sets.byext(1, 2, ..., n)
     B = nb.sets.bydef(nb.sets.isin(x, nb.sets.Q), f(x+3) > 38, x <= 2)
     
-    defs['ByExt'] = 'A' == A         # Equality is reversed.
-    defs['ByDef'] = nb.to('B') == B  # Order is ok.
+    defs['ByExtA'] = 'A' == A         # Equality is reversed.
+    defs['ByExtB'] = nb.equal('A', A) # Order is made OK
+    defs['ByDef'] = nb.to('B') == B   # Order is ok.
     defs['Ranges'] = nb.seq(nb.sets.range_cc(x, y, z),
                             nb.sets.range_co(x, y, z),
                             nb.sets.range_oc(x, y, z),
