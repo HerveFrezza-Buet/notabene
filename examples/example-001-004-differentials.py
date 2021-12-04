@@ -23,9 +23,13 @@ with nb.files.defs('001-004-diff.tex') as defs:
     f2 = nb.diff.Dfun(x, y, z)
     defs['DFun'] = nb.seq(f1(i**n), f2(i**n))
 
-    grad_x = nb.diff.Gfun(x)
-    defs['Grad'] = nb.seq(nb.diff.G(x),
-                          grad_x(i**n))
+    grad_f = nb.diff.Gfun('f')
+    defs['GradA'] = nb.seq(nb.diff.G('f'),
+                           grad_f(x))
+
+    grad_f = nb.diff.Gfun('f', x@0)
+    defs['GradB'] = nb.seq(nb.diff.G('f', x@0),
+                           grad_f(x))
 
     # integrals.
 

@@ -21,12 +21,16 @@ def dfun(*elem):
 def Dfun(*elem):
     return basics.fun(Dfrac(*elem))
 
-def G(elem):
+def G(elem, at=None):
     grad = basics.Symbol('\\nabla')
-    return basics.cat(grad, elem)
+    if at:
+        return basics.Formula([grad, basics.to(elem), basics.to(at)],
+                              lambda args : '{\\left. {' + str(args[0]) + '}{' + str(args[1]) + '} \\right|}_{' + str(args[2]) + '}')
+    else:
+        return basics.cat(grad, elem)
 
-def Gfun(*elem):
-    return basics.fun(G(*elem))
+def Gfun(elem, at=None):
+    return basics.fun(G(elem, at))
 
 
 def _integral(bounds):
