@@ -127,6 +127,8 @@ class Formula:
     
 
 def to(expr):
+    if isinstance(expr, type(None)):
+        return Empty()
     if isinstance(expr, bool):
         if expr:
             return text('true')
@@ -163,6 +165,10 @@ def arg(num):
     return Arg(num)
 
 
+class Empty(Formula):
+    def __init__(self):
+        super().__init__([], lambda args : '{}' )
+        
 class Arg(Formula):
     def __init__(self, num):
         super().__init__([], lambda args : '#' + str(num))
@@ -195,11 +201,11 @@ class Inverse(Formula):
 class Overline(Formula):
     def __init__(self, expr):
         super().__init__([to(expr)], lambda args : '\\overline{' + str(args[0]) +'}')
-
     
 class Seq(Formula):
     def __init__(self, *exprs):
         super().__init__([to(expr) for expr in exprs], lambda args : ',\\;'.join([str(arg) for arg in args]))
+
 
 def seq(*exprs):
     return Seq(*exprs)

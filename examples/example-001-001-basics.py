@@ -81,7 +81,7 @@ with nb.files.defs('001-001-basics.tex') as defs:
                        [n, n+1, n+2],
                        [x, x**2],
                        [pi],
-                       [1, 2, 3])
+                       [1, None, 3]) # None creates an empty slot.
     defs['Layout'] = layout
     
     # This generates a latex cheetsheet that you can compile and display.
