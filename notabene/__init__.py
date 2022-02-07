@@ -22,6 +22,7 @@ from .basics import symbol
 from .basics import layout
 from .basics import define
 from .basics import approx
+from .basics import isolate
 
 
 from .linalg import dots

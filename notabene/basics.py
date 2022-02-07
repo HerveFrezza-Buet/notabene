@@ -20,19 +20,19 @@ class Formula:
 
     def __getattr__(self, name):
         if name == 'T':
-            return Transpose(self)
+            return Exponent(self, Symbol('\\texttt{T}'))
         if name == 'inv':
-            return Inverse(self)
+            return Exponent(self, -1)
         if name == 'bar':
             return Overline(self)
         if name == 'star':
-            return Star(self)
+            return Exponent(self, Symbol('\\star'))
         if name == 'plus':
-            return Plus(self)
+            return Exponent(self, Symbol('+'))
         if name == 'minus':
-            return Minus(self)
+            return Exponent(self, Symbol('-'))
         if name == 'prime':
-            return Prime(self)
+            return Exponent(self, Symbol('\\prime'))
         else:
             raise AttributeError
     
@@ -169,14 +169,15 @@ class Empty(Formula):
     def __init__(self):
         super().__init__([], lambda args : '{}' )
         
+class Isolate(Formula):
+    def __init__(self, expr):
+        super().__init__([to(expr)], lambda args : '{' + str(args[0]) + '}')
+        
 class Arg(Formula):
     def __init__(self, num):
         super().__init__([], lambda args : '#' + str(num))
         self.max_argnum = num
         
-class Transpose(Formula):
-    def __init__(self, expr):
-        super().__init__([to(expr)], lambda args : str(args[0]) + '^{\\texttt{T}}')
         
 class Star(Formula):
     def __init__(self, expr):
@@ -193,10 +194,6 @@ class Plus(Formula):
 class Minus(Formula):
     def __init__(self, expr):
         super().__init__([to(expr)], lambda args : str(args[0]) + '^-')
-        
-class Inverse(Formula):
-    def __init__(self, expr):
-        super().__init__([to(expr)], lambda args : str(args[0]) + '^{-1}')
         
 class Overline(Formula):
     def __init__(self, expr):
@@ -295,13 +292,23 @@ class Frac(Formula):
 
 class Exponent(Formula):
     def __init__(self, expr, exponent):
-        super().__init__([to(expr), to(exponent)],
-                         lambda args : '{' + str(args[0]) + '}^{' + str(args[1]) + '}')
+        expr = to(expr)
+        if isinstance(expr, Index):
+            super().__init__([expr, to(exponent)],
+                             lambda args : str(args[0]) + '^{' + str(args[1]) + '}')
+        else:
+            super().__init__([expr, to(exponent)],
+                             lambda args : '{' + str(args[0]) + '}^{' + str(args[1]) + '}')
         
 class Index(Formula):
     def __init__(self, expr, index):
-        super().__init__([to(expr), to(index)],
-                         lambda args : '{' + str(args[0]) + '}_{' + str(args[1]) + '}')
+        expr = to(expr)
+        if isinstance(expr, Exponent):
+            super().__init__([expr, to(index)],
+                             lambda args : str(args[0]) + '_{' + str(args[1]) + '}')
+        else:
+            super().__init__([expr, to(index)],
+                             lambda args : '{' + str(args[0]) + '}_{' + str(args[1]) + '}')
         
 class IndexExp(Formula):
     def __init__(self, expr, index, exponent):
@@ -318,3 +325,8 @@ def approx(a, b):
 
 def symbol(latex_expression):
     return Symbol(latex_expression)
+
+def isolate(a):
+    return Isolate(a)
+                        
+                         
