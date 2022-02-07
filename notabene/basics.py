@@ -246,7 +246,7 @@ class Function:
 
     def __call__(self, *exprs):
         return Formula([self.name] + [to(expr) for expr in exprs],
-                       lambda args : '{' + str(args[0]) + '}\\left(' + str(Seq(*(args[1:]))) + '\\right)')
+                       lambda args : '{' + str(args[0]) + '}\\!\\left(' + str(Seq(*(args[1:]))) + '\\right)')
 
 def fun(name):
     if isinstance(name, str):
