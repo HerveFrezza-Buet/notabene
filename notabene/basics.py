@@ -178,23 +178,6 @@ class Arg(Formula):
         super().__init__([], lambda args : '#' + str(num))
         self.max_argnum = num
         
-        
-class Star(Formula):
-    def __init__(self, expr):
-        super().__init__([to(expr)], lambda args : str(args[0]) + '^\star')
-        
-class Prime(Formula):
-    def __init__(self, expr):
-        super().__init__([to(expr)], lambda args : str(args[0]) + '\'')
-        
-class Plus(Formula):
-    def __init__(self, expr):
-        super().__init__([to(expr)], lambda args : str(args[0]) + '^+')
-
-class Minus(Formula):
-    def __init__(self, expr):
-        super().__init__([to(expr)], lambda args : str(args[0]) + '^-')
-        
 class Overline(Formula):
     def __init__(self, expr):
         super().__init__([to(expr)], lambda args : '\\overline{' + str(args[0]) +'}')
