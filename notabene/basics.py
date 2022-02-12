@@ -109,6 +109,14 @@ class Formula:
     def __rtruediv__(self, other):
         return to(other).truediv(self)
     
+    def floordiv(self, other):
+        return InfixOp('/', self, other)
+    def __floordiv__(self, other):
+        return self.floordiv(other)
+    def __rfloordiv__(self, other):
+        return to(other).floordiv(self)
+
+    
     def power(self, other):
         return Exponent(self, other)
     def __pow__(self, other):

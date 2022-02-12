@@ -45,6 +45,9 @@ with nb.files.defs('001-001-basics.tex') as defs:
     e = 1 + sigma**2 / (-(x+y)**(x-y) + x*y)
     defs['Expr'] = e
 
+    ee = 1 + sigma**2 // (-(x+y)**(x-y) + x*y)
+    defs['FlatExpr'] = ee
+
     defs['Def'] = nb.define(L, e)
     
     defs['Approx'] = nb.approx(pi, 3.14)
