@@ -35,6 +35,15 @@ class Formula:
             return Exponent(self, Symbol('\\prime'))
         else:
             raise AttributeError
+
+    def isin(self, other):
+        return InfixOp('\\in', self, other)
+    
+    def isnotin(self, other):
+        return InfixOp('\\notin', self, other)
+    
+    def subset(self, other):
+        return InfixOp('\\subset', self, other)
     
     def add(self, other):
         return InfixOp('+', self, other)
@@ -160,6 +169,9 @@ def text(msg):
 def rm(msg):
     return Formula([],
                    lambda args : '\\mathrm{' + msg + '}')
+def tt(msg):
+    return Formula([],
+                   lambda args : '\\texttt{' + msg + '}')
 
 def arg(num):
     return Arg(num)

@@ -10,6 +10,7 @@ two        = nb.to(2)
 sigma, pi  = nb.to('\\sigma \\pi')
 L          = nb.symbol('{\\cal L}') # builds a formula from a latex expression
 roman      = nb.rm('roman') # builds a formula using \mathrm
+typed      = nb.tt('typed') # builds a formula using \texttt
 
 # Then, basic operators can be used to combine formulas... let us
 # illustrate some of them and put some results in the file basics.tex.
@@ -21,6 +22,7 @@ with nb.files.defs('001-001-basics.tex') as defs:
     
     defs['CalL'] = L
     defs['Mathrm'] = roman
+    defs['Texttt'] = typed
 
     defs['EqualA'] = L == roman # Makes an equality. You may encounter troubles with operand orders...
     defs['EqualB'] = nb.equal(L, roman) # ... so you can use this instead.

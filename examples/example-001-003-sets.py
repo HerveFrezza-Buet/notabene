@@ -8,9 +8,9 @@ with nb.files.defs('001-003-sets.tex') as defs:
     defs.prefix = 'ex'
 
     defs['Constants'] = nb.seq(nb.sets.empty, nb.sets.N, nb.sets.Z, nb.sets.Q, nb.sets.R, nb.sets.C, nb.sets.Boolean)
-    defs['IsIn'] = nb.sets.isin(x, nb.sets.Z)
-    defs['IsNotIn'] = nb.sets.isnotin(x, nb.sets.C)
-    defs['Subset'] = nb.sets.subset(x, nb.sets.C)
+    defs['IsIn']    = nb.seq(x.isin(nb.sets.Z),    nb.sets.isin(x, nb.sets.Z)   )
+    defs['IsNotIn'] = nb.seq(x.isnotin(nb.sets.C), nb.sets.isnotin(x, nb.sets.C))
+    defs['Subset']  = nb.seq(x.subset(nb.sets.C),  nb.sets.subset(x, nb.sets.C) )
     defs['Minus'] = nb.sets.minus(nb.sets.C, nb.sets.singleton(x))
     
     A = nb.sets.byext(1, 2, ..., n)
