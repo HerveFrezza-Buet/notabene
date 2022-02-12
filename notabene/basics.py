@@ -162,6 +162,23 @@ def to(expr):
 def equal(a, b):
     return InfixOp('=', a, b)
 
+def lt(a, b):
+    return InfixOp('<', a, b)
+    
+def leq(a, b):
+    return InfixOp('\\leq', a, b)
+
+def neq(a, b):
+    return InfixOp('\\neq', a, b)
+
+def gt(a, b):
+    return InfixOp('>', a, b)
+
+def geq(a, b):
+    return InfixOp('\\geq', a, b)
+
+
+
 def text(msg):
     return Formula([],
                    lambda args : '\\mbox{' + msg + '}')

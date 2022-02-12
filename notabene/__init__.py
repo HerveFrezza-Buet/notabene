@@ -16,6 +16,11 @@ from .basics import seq
 from .basics import cat
 from .basics import kat
 from .basics import equal
+from .basics import lt
+from .basics import leq
+from .basics import neq
+from .basics import gt
+from .basics import geq
 from .basics import text
 from .basics import rm
 from .basics import tt

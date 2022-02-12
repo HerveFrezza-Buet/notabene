@@ -26,6 +26,9 @@ with nb.files.defs('001-001-basics.tex') as defs:
 
     defs['EqualA'] = L == roman # Makes an equality. You may encounter troubles with operand orders...
     defs['EqualB'] = nb.equal(L, roman) # ... so you can use this instead.
+    # The same is available for comparison operators (nb.seq builds a sequence of expressions)
+    defs['OpsA'] = nb.seq((x < y),     (x <= y),     (x != y),     (x >= y),     (x > y))
+    defs['OpsB'] = nb.seq(nb.lt(x, y), nb.leq(x, y), nb.neq(x, y), nb.geq(x, y), nb.gt(x, y))
     
     nb.config.push('product', None) #default
     defs['ProdA'] = x*y
