@@ -198,6 +198,14 @@ def tt(msg):
     return Formula([],
                    lambda args : '\\texttt{' + msg + '}')
 
+def small(expr):
+    return Formula([to(expr)],
+                   lambda args : '{\\scriptstyle ' + str(expr) + '}')
+
+def smaller(expr):
+    return Formula([to(expr)],
+                   lambda args : '{\\scriptscriptstyle ' + str(expr) + '}')
+
 def arg(num):
     return Arg(num)
 

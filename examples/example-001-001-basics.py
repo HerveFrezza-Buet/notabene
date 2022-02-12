@@ -24,6 +24,10 @@ with nb.files.defs('001-001-basics.tex') as defs:
     defs['Mathrm'] = roman
     defs['Texttt'] = typed
 
+    defs['X'] = x
+    defs['Small'] = nb.small(x)
+    defs['Smaller'] = nb.smaller(x)
+
     defs['EqualA'] = L == roman # Makes an equality. You may encounter troubles with operand orders...
     defs['EqualB'] = nb.equal(L, roman) # ... so you can use this instead.
     # The same is available for comparison operators (nb.seq builds a sequence of expressions)

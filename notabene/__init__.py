@@ -24,6 +24,8 @@ from .basics import geq
 from .basics import text
 from .basics import rm
 from .basics import tt
+from .basics import small
+from .basics import smaller
 from .basics import symbol
 from .basics import layout
 from .basics import define
