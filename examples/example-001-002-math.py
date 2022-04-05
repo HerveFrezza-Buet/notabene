@@ -16,9 +16,10 @@ with nb.files.defs('001-002-math.tex') as defs:
     defs['Forall'] = nb.math.forall(x, x**2 >= 0)
     defs['Exists'] = nb.math.exists(x, x**2 == 0)
     
-    # Delimiters can be added around formulas (the previous is for parentheses).
+    # Delimiters can be added around formulas.
     x_2 = x ** 2
-    defs['Formulas'] = nb.seq(nb.math.abs(x_2),
+    defs['Formulas'] = nb.seq([x_2],
+                              nb.math.abs(x_2),
                               nb.math.sqrt(x_2),
                               nb.math.root(x_2, 13),
                               nb.math.norm(x_2),
