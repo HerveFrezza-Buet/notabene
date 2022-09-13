@@ -12,7 +12,7 @@ defs['Cartesian'] = nb.sets.isin([x, y, z],
 
 and you get this after the latex compiling:
 
-![(from the cheat shit)](https://github.com/HerveFrezza-Buet/notabene/blob/master/internal/nb-example-001.png?raw=true)
+![(from the cheat sheet)](./internal/nb-example-001.png)
 
 
 
