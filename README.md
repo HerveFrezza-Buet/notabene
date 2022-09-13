@@ -1,8 +1,8 @@
 # notabene
 
-notabene is a python library that handles your latex formulas... Indeed, we use python to express formulas in a readable way, and the translation into latex is done automatically.
+notabene is a python library that handles your latex formulas... Indeed, we use python to express formulas in a readable way, and the translation into latex is done automatically. You benefit from python functionalities as a programming language : define variables, functions, etc....
 
-You write this in python :
+Shortly, you write this in python :
 
 ```
 A, B = nb.to('A B')
@@ -14,7 +14,7 @@ and you get this after the latex compiling:
 
 ![(from the cheat sheet)](./internal/nb-example-001.png)
 
-
+A comprehensive set of examples are provided in the example section.
 
 ## Installation
 
