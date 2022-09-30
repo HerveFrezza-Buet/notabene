@@ -33,9 +33,13 @@ with nb.files.defs('001-004-diff.tex') as defs:
 
     # integrals.
 
-    defs['IntA'] = nb.diff.integral(x==1, f(x), x)
-    defs['IntB'] = nb.diff.integral((x==1, n), f(x), x)
-    defs['IntC'] = nb.diff.integral([(x==1, n), y < x, (z==0, x**2)],
+    defs['IntA'] = nb.diff.integral(None, f(x), x)
+    defs['IntB'] = nb.diff.integral(x==1, f(x), x)
+    defs['IntC'] = nb.diff.integral((x==1, n), f(x), x)
+    defs['IntD'] = nb.diff.integral([(x==1, n), y < x, None, (z==0, x**2)],
+                                    f(x, y, z),
+                                    [x,y,z])
+    defs['IntE'] = nb.diff.integral([None, None, None],
                                     f(x, y, z),
                                     [x,y,z])
 

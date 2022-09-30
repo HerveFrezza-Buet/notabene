@@ -47,6 +47,8 @@ def integral(ints, expr, diffs):
     else:
         integrals = [ints]
     line = [_integral(i) for i in integrals]
+    if integrals[-1] == None:
+        line.append(basics.Symbol('\\,'))
     line.append(basics.to(expr))
     if isinstance(diffs, list):
         line.append(d(*diffs))
