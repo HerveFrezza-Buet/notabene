@@ -25,6 +25,10 @@ class Formula:
             return Exponent(self, -1)
         if name == 'bar':
             return Overline(self)
+        if name == 'hat':
+            return Hat(self)
+        if name == 'tilde':
+            return Tilde(self)
         if name == 'star':
             return Exponent(self, Symbol('\\star'))
         if name == 'plus':
@@ -230,6 +234,14 @@ class Arg(Formula):
 class Overline(Formula):
     def __init__(self, expr):
         super().__init__([to(expr)], lambda args : '\\overline{' + str(args[0]) +'}')
+        
+class Hat(Formula):
+    def __init__(self, expr):
+        super().__init__([to(expr)], lambda args : '\\widehat{' + str(args[0]) +'}')
+        
+class Tilde(Formula):
+    def __init__(self, expr):
+        super().__init__([to(expr)], lambda args : '\\widetilde{' + str(args[0]) +'}')
     
 class Seq(Formula):
     def __init__(self, *exprs):
