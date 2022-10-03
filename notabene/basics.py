@@ -194,6 +194,10 @@ def text(msg):
 def rm(msg):
     return Formula([],
                    lambda args : '\\mathrm{' + msg + '}')
+def cal(msg):
+    return Formula([],
+                   lambda args : '{\\cal ' + msg + '}')
+                   
 def tt(msg):
     return Formula([],
                    lambda args : '\\texttt{' + msg + '}')

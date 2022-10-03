@@ -9,6 +9,7 @@ x, y, n, i = nb.to('x y n i')
 two        = nb.to(2)
 sigma, pi  = nb.to('\\sigma \\pi')
 L          = nb.symbol('{\\cal L}') # builds a formula from a latex expression
+L          = nb.cal('L')    # builds a formula using \cal
 roman      = nb.rm('roman') # builds a formula using \mathrm
 typed      = nb.tt('typed') # builds a formula using \texttt
 

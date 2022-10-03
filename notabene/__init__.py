@@ -23,6 +23,7 @@ from .basics import neq
 from .basics import gt
 from .basics import geq
 from .basics import text
+from .basics import cal
 from .basics import rm
 from .basics import tt
 from .basics import small
