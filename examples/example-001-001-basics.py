@@ -73,8 +73,11 @@ with nb.files.defs('001-001-basics.tex') as defs:
 
 
     # nb.cat concatenates formulas, nb.kat does the same with spacing.
-    defs['Cat'] = nb.cat(x**2, y**3, x**n)
-    defs['Kat'] = nb.kat(x**2, y**3, x**n)
+    defs['Cat'] = nb.cat(x**2, y**3, x**n, 1, 2, 3, 4, 5)
+    defs['Kat'] = nb.kat(x**2, y**3, x**n, 1, 2, 3, 4, 5)
+    # nb.seq adds comma and spaces, nb.sek removes spaces.
+    defs['Seq'] = nb.seq(x**2, y**3, x**n, 1, 2, 3, 4, 5)
+    defs['Sek'] = nb.sek(x**2, y**3, x**n, 1, 2, 3, 4, 5)
 
 
     # You can define functions.

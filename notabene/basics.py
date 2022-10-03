@@ -231,9 +231,16 @@ class Seq(Formula):
     def __init__(self, *exprs):
         super().__init__([to(expr) for expr in exprs], lambda args : ',\\;'.join([str(arg) for arg in args]))
 
+class Sek(Formula):
+    def __init__(self, *exprs):
+        super().__init__([to(expr) for expr in exprs], lambda args : ','.join([str(arg) for arg in args]))
+
 
 def seq(*exprs):
     return Seq(*exprs)
+
+def sek(*exprs):
+    return Sek(*exprs)
 
 class Cat(Formula):
     def __init__(self, *exprs):

@@ -13,6 +13,7 @@ from .basics import arg
 from .basics import to
 from .basics import fun
 from .basics import seq
+from .basics import sek
 from .basics import cat
 from .basics import kat
 from .basics import equal
