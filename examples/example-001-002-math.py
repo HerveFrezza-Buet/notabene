@@ -34,6 +34,14 @@ with nb.files.defs('001-002-math.tex') as defs:
     sum2 = nb.math.sum(nb.sets.isin(i, nb.sets.N), 1 / i**2)
     prod = nb.math.prod(nb.sets.isin(i, nb.sets.N), 1 / i**2)
     defs['SumProd'] = nb.seq(sum1, sum2, prod)
+
+    # Argmin and argmax (see sets)
+    where = nb.sets.isin(x, nb.sets.C)
+    what = nb.fun('g')(x**2)
+    defs['Args'] = nb.seq(nb.sets.max(where, what),
+                          nb.sets.min(where, what),
+                          nb.sets.argmax(where, what),
+                          nb.sets.argmin(where, what))
     
 
     # This can be mixed nicely for a system of equations.
