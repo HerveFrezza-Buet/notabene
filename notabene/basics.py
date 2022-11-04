@@ -37,6 +37,10 @@ class Formula:
             return Exponent(self, Symbol('-'))
         if name == 'prime':
             return Exponent(self, Symbol('\\prime'))
+        if name == 'dprime':
+            return Exponent(self, Symbol('\\prime\\prime'))
+        if name == 'trprime':
+            return Exponent(self, Symbol('\\prime\\prime\\prime'))
         else:
             raise AttributeError
 
