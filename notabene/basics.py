@@ -175,25 +175,26 @@ def to(expr):
         return Formula([to(e) for e in expr],
                        lambda args : '\\left(' + ','.join([str(arg) for arg in args]) + '\\right)')
 
-def equal(a, b):
-    return InfixOp('=', a, b)
+def equal(*args):
+    return InfixOp('=', *args)
 
-def lt(a, b):
-    return InfixOp('<', a, b)
+def lt(*args):
+    return InfixOp('<', *args)
     
-def leq(a, b):
-    return InfixOp('\\leq', a, b)
+def leq(*args):
+    return InfixOp('\\leq', *args)
 
-def neq(a, b):
-    return InfixOp('\\neq', a, b)
+def neq(*args):
+    return InfixOp('\\neq', *args)
 
-def gt(a, b):
-    return InfixOp('>', a, b)
+def gt(*args):
+    return InfixOp('>', *args)
 
-def geq(a, b):
-    return InfixOp('\\geq', a, b)
+def geq(*args):
+    return InfixOp('\\geq', *args)
 
-
+def approx(*args):
+    return InfixOp(Symbol('\simeq'), *args)
 
 def text(msg):
     return Formula([],
@@ -335,9 +336,10 @@ class Symbol(Formula):
         super().__init__([], lambda x : latex_expression)
 
 class InfixOp(Formula):
-    def __init__(self, op, left, right):
-        super().__init__([to(op), to(left), to(right)],
-                         lambda args : '{' + str(args[1]) + '} ' + str(args[0]) + ' {' + str(args[2]) + '}')
+    def __init__(self, op, *args):
+        tos = [to(op)] + [to(arg) for arg in args]
+        super().__init__(tos,
+                         lambda args : str(args[0]).join(['{' + str(arg) + '}' for arg in args[1:]]))
 
 class Frac(Formula):
     def __init__(self, num, denom):
@@ -378,8 +380,6 @@ def define(name, *expr):
     return kat(*defs)
 
 
-def approx(a, b):
-    return InfixOp(Symbol('\simeq'), a, b)
 
 def symbol(latex_expression):
     return Symbol(latex_expression)

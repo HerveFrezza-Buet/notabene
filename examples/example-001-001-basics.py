@@ -5,13 +5,13 @@ import notabene as nb
 # first, you need to build formulas from scratch. This is what nb.to
 # does.
 
-x, y, n, i = nb.to('x y n i')
-two        = nb.to(2)
-sigma, pi  = nb.to('\\sigma \\pi')
-L          = nb.symbol('{\\cal L}') # builds a formula from a latex expression
-L          = nb.cal('L')    # builds a formula using \cal
-roman      = nb.rm('roman') # builds a formula using \mathrm
-typed      = nb.tt('typed') # builds a formula using \texttt
+x, y, z, n, i = nb.to('x y z n i')
+two           = nb.to(2)
+sigma, pi     = nb.to('\\sigma \\pi')
+L             = nb.symbol('{\\cal L}') # builds a formula from a latex expression
+L             = nb.cal('L')    # builds a formula using \cal
+roman         = nb.rm('roman') # builds a formula using \mathrm
+typed         = nb.tt('typed') # builds a formula using \texttt
 
 # Then, basic operators can be used to combine formulas... let us
 # illustrate some of them and put some results in the file basics.tex.
@@ -30,10 +30,16 @@ with nb.files.defs('001-001-basics.tex') as defs:
     defs['Smaller'] = nb.smaller(x)
 
     defs['EqualA'] = L == roman # Makes an equality. You may encounter troubles with operand orders...
-    defs['EqualB'] = nb.equal(L, roman) # ... so you can use this instead.
+    defs['EqualB'] = nb.equal(L, roman) # ... so you can use this instead...
+    defs['EqualC'] = nb.equal(L, roman, 3, x, y) # ... which is more general.
     # The same is available for comparison operators (nb.seq builds a sequence of expressions)
-    defs['OpsA'] = nb.seq((x < y),     (x <= y),     (x != y),     (x >= y),     (x > y))
-    defs['OpsB'] = nb.seq(nb.lt(x, y), nb.leq(x, y), nb.neq(x, y), nb.geq(x, y), nb.gt(x, y))
+    defs['OpsA'] = nb.seq((x < y), (x <= y), (x != y), (x >= y), (x > y), nb.approx(pi, 3.14))
+    defs['OpsB'] = nb.lt(x, y, z, ...)
+    defs['OpsC'] = nb.leq(x, y, z, ...)
+    defs['OpsD'] = nb.neq(x, y, z, ...)
+    defs['OpsE'] = nb.geq(x, y, z, ...)
+    defs['OpsF'] = nb.gt(x, y, z, ...)
+    defs['OpsG'] = nb.approx(x, y, z, ...)
     
     nb.config.push('product', None) #default
     defs['ProdA'] = x*y
@@ -54,8 +60,6 @@ with nb.files.defs('001-001-basics.tex') as defs:
     defs['FlatExpr'] = ee
 
     defs['Def'] = nb.define(L, e, ee)
-    
-    defs['Approx'] = nb.approx(pi, 3.14)
 
     defs['Sequence'] = nb.seq(pi, x, ..., y, e, ...) # You can use ... !
 
