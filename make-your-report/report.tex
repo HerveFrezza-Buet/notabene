@@ -1,0 +1,28 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx}
+
+\usepackage[colorlinks=true, linkcolor=blue, anchorcolor=blue,
+citecolor=blue, filecolor=blue, menucolor=blue,
+urlcolor=blue]{hyperref}
+
+\input{notations.tex} % from notabene
+
+\title{Example of an article using {\tt notabene}}
+\author{Myself Me}
+\date{\today}
+
+\bibliographystyle{plain}
+
+\begin{document}
+\maketitle
+
+\input{introduction.tex}
+\input{main.tex}
+\input{conclusion.tex}
+
+\bibliography{biblio}
+\end{document}
+
+  
