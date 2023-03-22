@@ -19,7 +19,7 @@ def updating_rule(learnable, target, coef):
 # let us define a new formula, that encloses some argument with a
 # brace above and below (each one has a label). To do this, you can
 # produce a basic formula. The Formula constructor needs a list of
-# arguments (args) as well ad a function that produces the latex code
+# arguments (args) as well as a function that produces the latex code
 # as a string. Be sure to apply nb.to to all the arguments.
 
 # This is the production of latex code.
