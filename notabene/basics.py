@@ -210,6 +210,9 @@ def cal(msg):
 def tt(msg):
     return Formula([],
                    lambda args : '\\texttt{' + msg + '}')
+def bf(msg):
+    return Formula([],
+                   lambda args : '\\textbf{' + msg + '}')
 
 def small(expr):
     return Formula([to(expr)],

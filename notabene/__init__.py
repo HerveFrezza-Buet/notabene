@@ -26,6 +26,7 @@ from .basics import text
 from .basics import cal
 from .basics import rm
 from .basics import tt
+from .basics import bf
 from .basics import small
 from .basics import smaller
 from .basics import symbol

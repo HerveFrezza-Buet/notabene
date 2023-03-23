@@ -12,6 +12,7 @@ L             = nb.symbol('{\\cal L}') # builds a formula from a latex expressio
 L             = nb.cal('L')    # builds a formula using \cal
 roman         = nb.rm('roman') # builds a formula using \mathrm
 typed         = nb.tt('typed') # builds a formula using \texttt
+bold          = nb.bf('bold')  # builds a formula using \mathbf
 
 # Then, basic operators can be used to combine formulas... let us
 # illustrate some of them and put some results in the file basics.tex.
@@ -24,6 +25,7 @@ with nb.files.defs('001-001-basics.tex') as defs:
     defs['CalL'] = L
     defs['Mathrm'] = roman
     defs['Texttt'] = typed
+    defs['Mathbf'] = bold
 
     defs['X'] = x
     defs['Small'] = nb.small(x)
@@ -91,6 +93,7 @@ with nb.files.defs('001-001-basics.tex') as defs:
     fname = nb.to('f')@(nb.seq(sigma, i), pi)
     f = nb.fun(fname)
     defs['Func'] = f(x, y, i, n, pi)
+    defs['FuncName'] = f.name
 
     xy = [x, y, i, 3] # a list, not a formula.
     xy_t = xy**nb.text('hello world') # a list combined with a formula makes a formula.
