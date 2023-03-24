@@ -345,7 +345,7 @@ class InfixOp(Formula):
 
 class Pipe(Formula):
     def __init__(self, expr1, expr2):
-        super().__init__([to(expr1), to(expr2)], lambda args : '{\\left. ' + str(args[0]) + ' \\middle| ' + str(args[1]) + '\\right.}')
+        super().__init__([to(expr1), to(expr2)], lambda args : '\\left. {' + str(args[0]) + '}\\; \\middle|\\; {' + str(args[1]) + '}\\right.')
 
 def pipe(expr1, expr2):
     return Pipe(expr1, expr2)
