@@ -31,6 +31,7 @@ from .basics import small
 from .basics import smaller
 from .basics import symbol
 from .basics import layout
+from .basics import pipe
 from .basics import define
 from .basics import approx
 from .basics import isolate

@@ -42,6 +42,9 @@ with nb.files.defs('001-001-basics.tex') as defs:
     defs['OpsE'] = nb.geq(x, y, z, ...)
     defs['OpsF'] = nb.gt(x, y, z, ...)
     defs['OpsG'] = nb.approx(x, y, z, ...)
+
+    # This inserts a pipe
+    defs['Pipe'] = nb.pipe(x/y, x/(x+y/z))
     
     nb.config.push('product', None) #default
     defs['ProdA'] = x*y
@@ -92,7 +95,8 @@ with nb.files.defs('001-001-basics.tex') as defs:
     # You can define functions.
     fname = nb.to('f')@(nb.seq(sigma, i), pi)
     f = nb.fun(fname)
-    defs['Func'] = f(x, y, i, n, pi)
+    defs['FuncA'] = f(x, y, i, n, pi)
+    defs['FuncB'] = f(nb.pipe(x,y/z))
     defs['FuncName'] = f.name
 
     xy = [x, y, i, 3] # a list, not a formula.

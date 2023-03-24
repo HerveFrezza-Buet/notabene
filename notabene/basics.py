@@ -201,18 +201,18 @@ def text(msg):
                    lambda args : '\\mbox{' + msg + '}')
 
 def rm(msg):
-    return Formula([],
-                   lambda args : '\\mathrm{' + msg + '}')
+    return Formula([to(msg)],
+                   lambda args : '\\mathrm{' + str(args[0]) + '}')
 def cal(msg):
-    return Formula([],
-                   lambda args : '{\\cal ' + msg + '}')
+    return Formula([to(msg)],
+                   lambda args : '{\\cal ' + str(args[0]) + '}')
                    
 def tt(msg):
-    return Formula([],
-                   lambda args : '\\texttt{' + msg + '}')
+    return Formula([to(msg)],
+                   lambda args : '\\texttt{' + str(args[0]) + '}')
 def bf(msg):
-    return Formula([],
-                   lambda args : '\\textbf{' + msg + '}')
+    return Formula([to(msg)],
+                   lambda args : '\\textbf{' + str(args[0]) + '}')
 
 def small(expr):
     return Formula([to(expr)],
@@ -258,7 +258,6 @@ class Seq(Formula):
 class Sek(Formula):
     def __init__(self, *exprs):
         super().__init__([to(expr) for expr in exprs], lambda args : ','.join([str(arg) for arg in args]))
-
 
 def seq(*exprs):
     return Seq(*exprs)
@@ -343,6 +342,13 @@ class InfixOp(Formula):
         tos = [to(op)] + [to(arg) for arg in args]
         super().__init__(tos,
                          lambda args : str(args[0]).join(['{' + str(arg) + '}' for arg in args[1:]]))
+
+class Pipe(Formula):
+    def __init__(self, expr1, expr2):
+        super().__init__([to(expr1), to(expr2)], lambda args : '{\\left. ' + str(args[0]) + ' \\middle| ' + str(args[1]) + '\\right.}')
+
+def pipe(expr1, expr2):
+    return Pipe(expr1, expr2)
 
 class Frac(Formula):
     def __init__(self, num, denom):
