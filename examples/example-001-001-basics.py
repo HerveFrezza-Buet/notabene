@@ -79,6 +79,7 @@ with nb.files.defs('001-001-basics.tex') as defs:
     defs['DecorationA'] = nb.seq(e.bar, e.hat, e.tilde)
     defs['DecorationB'] = nb.seq(e.inv, e.T, e.star, e.plus, e.minus)
     defs['DecorationC'] = nb.seq(e.prime, e.dprime, e.trprime)
+    defs['DecorationD'] = nb.seq(L.at@(x,y))
 
     # nb.seq builds a formula that is a sequence of others.
     defs['IndexExponent'] = nb.seq(x*y, x^y, x**y, x@y, x@(y,sigma))    

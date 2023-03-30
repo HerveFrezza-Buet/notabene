@@ -29,6 +29,8 @@ class Formula:
             return Hat(self)
         if name == 'tilde':
             return Tilde(self)
+        if name == 'at':
+            return At(self)
         if name == 'star':
             return Exponent(self, Symbol('\\star'))
         if name == 'plus':
@@ -346,6 +348,10 @@ class InfixOp(Formula):
 class Pipe(Formula):
     def __init__(self, expr1, expr2):
         super().__init__([to(expr1), to(expr2)], lambda args : '\\left. {' + str(args[0]) + '}\\; \\middle|\\; {' + str(args[1]) + '}\\right.')
+        
+class At(Formula):
+    def __init__(self, expr):
+        super().__init__([to(expr)], lambda args : '\\left. {' + str(args[0]) + '}\\right|')
 
 def pipe(expr1, expr2):
     return Pipe(expr1, expr2)
