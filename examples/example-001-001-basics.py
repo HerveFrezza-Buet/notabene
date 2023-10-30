@@ -34,6 +34,7 @@ with nb.files.defs('001-001-basics.tex') as defs:
     defs['EqualA'] = L == roman # Makes an equality. You may encounter troubles with operand orders...
     defs['EqualB'] = nb.equal(L, roman) # ... so you can use this instead...
     defs['EqualC'] = nb.equal(L, roman, 3, x, y) # ... which is more general.
+    defs['EqualD'] = L.equal(roman) # This uses a method equal available for any formula.
     # The same is available for comparison operators (nb.seq builds a sequence of expressions)
     defs['OpsA'] = nb.seq((x < y), (x <= y), (x != y), (x >= y), (x > y), nb.approx(pi, 3.14))
     defs['OpsB'] = nb.lt(x, y, z, ...)
@@ -42,6 +43,8 @@ with nb.files.defs('001-001-basics.tex') as defs:
     defs['OpsE'] = nb.geq(x, y, z, ...)
     defs['OpsF'] = nb.gt(x, y, z, ...)
     defs['OpsG'] = nb.approx(x, y, z, ...)
+    # All these are also available as methods of any formula.
+    defs['OpsH'] = nb.seq(x.lt(y), x.leq(y), x.neq(y), x.geq(y), x.gt(y), pi.approx(3.14))
 
     # This inserts a pipe
     defs['Pipe'] = nb.pipe(x/y, x/(x+y/z))

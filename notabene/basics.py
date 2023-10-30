@@ -58,6 +58,27 @@ class Formula:
     def such_as(self, other):
         return seq(self, other)
     
+    def equal(self, other):
+        return equal(self, other)
+
+    def lt(self, other):
+        return lt(self, other)
+    
+    def leq(self, other):
+        return leq(self, other)
+
+    def neq(self, other):
+        return neq(self, other)
+
+    def gt(self, other):
+        return gt(self, other)
+
+    def geq(self, other):
+        return geq(self, other)
+
+    def approx(self, other):
+        return approx(self, other)
+    
     def add(self, other):
         return InfixOp('+', self, other)
     def __add__(self, other):
