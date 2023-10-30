@@ -43,6 +43,14 @@ class Formula:
             return Exponent(self, Symbol('\\prime\\prime'))
         if name == 'trprime':
             return Exponent(self, Symbol('\\prime\\prime\\prime'))
+        if name == 're':
+            return re(self)
+        if name == 'im':
+            return im(self)
+        if name == 'module':
+            return module(self)
+        if name == 'argument':
+            return argument(self)
         else:
             raise AttributeError
 
@@ -425,5 +433,19 @@ def symbol(latex_expression):
 
 def isolate(a):
     return Isolate(a)
+
+### This is for complex numbers
+
+def re(expr):
+    return fun(rm('Re'))(expr)
+
+def im(expr):
+    return fun(rm('Im'))(expr)
+
+def argument(expr):
+    return fun(rm('arg'))(expr)
+
+def module(expr):
+    return fun(rm('mod'))(expr)
                         
                          

@@ -45,6 +45,12 @@ with nb.files.defs('001-003-sets.tex') as defs:
     defs['UnionIter'] = nb.seq(nb.sets.Union(i==1, n, x@i),
                                nb.sets.Union(nb.sets.subset(i,x), i)) 
     defs['InterIter'] = nb.seq(nb.sets.Inter(i==1, n, x@i),
-                               nb.sets.Inter(nb.sets.subset(i,x), i)) 
+                               nb.sets.Inter(nb.sets.subset(i,x), i))
+
+    cplx = nb.to('a') + i*nb.to('b')
+    defs['ComplexRe'] = nb.seq(nb.re(cplx), cplx.re)
+    defs['ComplexIm'] = nb.seq(nb.im(cplx), cplx.im)
+    defs['ComplexModule'] = nb.seq(nb.module(cplx), cplx.module)
+    defs['ComplexArgument'] = nb.seq(nb.argument(cplx), cplx.argument)
     
     defs.cheatsheet() 

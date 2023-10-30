@@ -36,5 +36,10 @@ from .basics import define
 from .basics import approx
 from .basics import isolate
 
+from .basics import re
+from .basics import im
+from .basics import argument
+from .basics import module
+
 
 from .linalg import dots
