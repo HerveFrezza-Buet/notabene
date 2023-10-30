@@ -54,6 +54,9 @@ class Formula:
     
     def subset(self, other):
         return InfixOp('\\subset', self, other)
+
+    def such_as(self, other):
+        return seq(self, other)
     
     def add(self, other):
         return InfixOp('+', self, other)

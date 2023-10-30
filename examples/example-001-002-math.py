@@ -15,6 +15,10 @@ with nb.files.defs('001-002-math.tex') as defs:
     # Quantifiers are available
     defs['Forall'] = nb.math.forall(x, x**2 >= 0)
     defs['Exists'] = nb.math.exists(x, x**2 == 0)
+
+    # Such as is also available
+    defs['SuchAsOne'] = x.isin('X').such_as(x > 0)                   # with such_as method
+    defs['SuchAsTwo'] = nb.math.such_as(nb.sets.isin(x, 'X'), x > 0) # with functions.
     
     # Delimiters can be added around formulas.
     x_2 = x ** 2
