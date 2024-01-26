@@ -20,6 +20,9 @@ def uniform(the_set):
 def normal(mu, sigma):
     return basics.fun(basics.Symbol('{\\cal N}'))(mu, sigma)
 
+def joint(*elems):
+    return basics.cat(*elems)
+
 def P(event):
     return basics.fun(_Psymb)(event)
 

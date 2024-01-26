@@ -17,6 +17,7 @@ from .basics import sek
 from .basics import cat
 from .basics import kat
 from .basics import equal
+from .basics import equals
 from .basics import lt
 from .basics import leq
 from .basics import neq

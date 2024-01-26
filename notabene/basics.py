@@ -68,6 +68,9 @@ class Formula:
     
     def equal(self, other):
         return equal(self, other)
+    
+    def equals(self, other):
+        return equals(self, other)
 
     def lt(self, other):
         return lt(self, other)
@@ -211,6 +214,9 @@ def to(expr):
 
 def equal(*args):
     return InfixOp('=', *args)
+
+def equals(*args):
+    return equal(*args)
 
 def lt(*args):
     return InfixOp('<', *args)

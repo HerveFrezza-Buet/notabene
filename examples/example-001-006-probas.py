@@ -10,6 +10,9 @@ with nb.files.defs('001-006-probas.tex') as defs:
     the_set = nb.sets.range_cc(0, 1)
     law1    = nb.proba.uniform(the_set)
     law2    = nb.proba.normal(mu, sigma)
+
+    ABC = nb.proba.joint(A, B, C)
+    
     defs['Laws'] = nb.seq(law1, law2)
 
     defs['Proba'] = nb.seq(nb.proba.P(nb.sets.isin(X, A)),
@@ -17,11 +20,17 @@ with nb.files.defs('001-006-probas.tex') as defs:
                                           nb.sets.isin(Y, B),
                                           nb.sets.isin(Z, C)))
 
+
+    defs['Joint'] = ABC
+
     defs['CustomLaws'] = nb.seq(nb.proba.law(X),
                                 nb.proba.law_cond(X,Y,Z))
 
     defs['Densities'] = nb.seq(nb.proba.density(X),
                                nb.proba.density_cond(X,Y,Z))
+
+    defs['DensitiesOf'] = nb.equals(nb.fun(nb.proba.density(nb.proba.joint(X,Y)))('x', 'y'),
+                                    nb.fun(nb.proba.density_cond(Y, X == 'x'))('y') * nb.fun(nb.proba.density(X))('x'))
 
     defs['Follows'] = nb.proba.follows(X, law1)
     

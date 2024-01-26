@@ -35,6 +35,7 @@ with nb.files.defs('001-001-basics.tex') as defs:
     defs['EqualB'] = nb.equal(L, roman) # ... so you can use this instead...
     defs['EqualC'] = nb.equal(L, roman, 3, x, y) # ... which is more general.
     defs['EqualD'] = L.equal(roman) # This uses a method equal available for any formula.
+    defs['EqualE'] = seq(L.equals(roman), nb.equals(L, roman, 3, x, y)) # 'equal' can be written 'equals' as well.
     # The same is available for comparison operators (nb.seq builds a sequence of expressions)
     defs['OpsA'] = nb.seq((x < y), (x <= y), (x != y), (x >= y), (x > y), nb.approx(pi, 3.14))
     defs['OpsB'] = nb.lt(x, y, z, ...)
