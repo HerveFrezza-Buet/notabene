@@ -33,6 +33,8 @@ class Formula:
             return At(self)
         if name == 'star':
             return Exponent(self, Symbol('\\star'))
+        if name == 'aster':
+            return Exponent(self, Symbol('*'))
         if name == 'plus':
             return Exponent(self, Symbol('+'))
         if name == 'minus':
@@ -61,6 +63,8 @@ class Formula:
             return im(self)
         if name == 'module':
             return module(self)
+        if name == 'conj':
+            return conj(self)
         if name == 'argument':
             return argument(self)
         else:
@@ -465,5 +469,13 @@ def argument(expr):
 
 def module(expr):
     return fun(rm('mod'))(expr)
+
+def conj(expr):
+    mode = config.get('conjugate')
+    if mode == '*':
+        return expr.aster
+    if mode == '_':
+        return expr.bar
+    raise ValueError(f"Bad conjugate mode ('{mode}') is currently used.")
                         
                          

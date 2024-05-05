@@ -41,6 +41,7 @@ from .basics import re
 from .basics import im
 from .basics import argument
 from .basics import module
+from .basics import conj
 
 
 from .linalg import dots

@@ -1,6 +1,7 @@
 mode = {'display style' : [False],
         'product'       : [None ],
         'vector'        : [None ],
+        'conjugate'     : ['*'],
         'dot product'   : [None ]}
 
 last_selected_mode = None

@@ -53,4 +53,12 @@ with nb.files.defs('001-003-sets.tex') as defs:
     defs['ComplexModule'] = nb.seq(nb.module(cplx), cplx.module)
     defs['ComplexArgument'] = nb.seq(nb.argument(cplx), cplx.argument)
     
+    nb.config.push('conjugate', '*') # This is the default
+    defs['ComplexConjA'] = nb.seq(nb.conj(z), z.conj)
+    nb.config.pop()
+    nb.config.push('conjugate', '_')
+    defs['ComplexConjB'] = nb.seq(nb.conj(z), z.conj)
+    nb.config.pop()
+    
+    
     defs.cheatsheet() 
