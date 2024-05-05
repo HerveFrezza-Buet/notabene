@@ -1,4 +1,5 @@
 import notabene as nb
+from notabene.linalg import bra, ket # enable ket(x) instead of nb.linalg.ket(x)
 
 A, B, C = nb.to('A B C')
 a, b    = nb.to('a b')
@@ -38,7 +39,7 @@ with nb.files.defs('001-007-linalg.tex') as defs:
     dot3 = nb.linalg.dot(xb, ya)
     nb.config.pop()
     
-    nb.config.push('dot product', 'T') # Let us keep this (we do not pop)
+    nb.config.push('dot product', 'T') # Let us keep this (we do not pop yet)
     dot4 = nb.linalg.dot(xb, ya)
 
     defs['DotProducts'] = nb.seq(dot1, dot2, dot3, dot4)
@@ -61,6 +62,13 @@ with nb.files.defs('001-007-linalg.tex') as defs:
                           nb.linalg.matrix([0,            nb.dots('_'),  1           ],
                                            [nb.dots('|'), nb.dots('/'),  nb.dots('|')],
                                            [1,            nb.dots('_'),  0           ]))
+
+    nb.config.pop()
+    nb.config.push('dot product', '<|>')
+    nb.config.push('product', None)
+    phi, psi = nb.to('\\varphi \\psi')
+    
+    defs['MecaQ'] = nb.seq(nb.linalg.dot(phi, psi), bra(phi), ket(psi), bra(phi)*ket(psi),  bra(phi)*'A'*ket(psi))
     
 
     

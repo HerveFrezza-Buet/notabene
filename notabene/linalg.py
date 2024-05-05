@@ -40,3 +40,12 @@ def dots(kind) :
               '/'  : basics.Symbol('\\iddots'),
               '\\' : basics.Symbol('\\ddots')}
     return select[kind]
+
+def bra(expr):
+    return basics.Formula([expr],
+                          lambda args : '\\left< {' + str(args[0]) + '} \\right|')
+
+def ket(expr):
+    return basics.Formula([expr],
+                          lambda args : '\\left| {' + str(args[0]) + '} \\right>')
+    
