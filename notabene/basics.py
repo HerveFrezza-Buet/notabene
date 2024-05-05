@@ -43,6 +43,18 @@ class Formula:
             return Exponent(self, Symbol('\\prime\\prime'))
         if name == 'trprime':
             return Exponent(self, Symbol('\\prime\\prime\\prime'))
+        if name == 'dag':
+            return Exponent(self, Symbol('\\dag'))
+        if name == 'ddag':
+            return Exponent(self, Symbol('\\ddag'))
+        if name == 'ortho':
+            return Exponent(self, Symbol('\\perp'))
+        if name == '_ortho':
+            return Index(self, Symbol('\\perp'))
+        if name == 'para':
+            return Exponent(self, Symbol('\\parallel'))
+        if name == '_para':
+            return Index(self, Symbol('\\parallel'))
         if name == 're':
             return re(self)
         if name == 'im':

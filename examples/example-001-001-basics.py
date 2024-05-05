@@ -35,7 +35,7 @@ with nb.files.defs('001-001-basics.tex') as defs:
     defs['EqualB'] = nb.equal(L, roman) # ... so you can use this instead...
     defs['EqualC'] = nb.equal(L, roman, 3, x, y) # ... which is more general.
     defs['EqualD'] = L.equal(roman) # This uses a method equal available for any formula.
-    defs['EqualE'] = seq(L.equals(roman), nb.equals(L, roman, 3, x, y)) # 'equal' can be written 'equals' as well.
+    defs['EqualE'] = nb.seq(L.equals(roman), nb.equals(L, roman, 3, x, y)) # 'equal' can be written 'equals' as well.
     # The same is available for comparison operators (nb.seq builds a sequence of expressions)
     defs['OpsA'] = nb.seq((x < y), (x <= y), (x != y), (x >= y), (x > y), nb.approx(pi, 3.14))
     defs['OpsB'] = nb.lt(x, y, z, ...)
@@ -81,9 +81,10 @@ with nb.files.defs('001-001-basics.tex') as defs:
     # Nice attributes are available
     e = nb.to([x+y])
     defs['DecorationA'] = nb.seq(e.bar, e.hat, e.tilde)
-    defs['DecorationB'] = nb.seq(e.inv, e.T, e.star, e.plus, e.minus)
+    defs['DecorationB'] = nb.seq(e.inv, e.T, e.star, e.plus, e.minus, e.dag, e.ddag)
     defs['DecorationC'] = nb.seq(e.prime, e.dprime, e.trprime)
-    defs['DecorationD'] = nb.seq(L.at@(x,y))
+    defs['DecorationD'] = nb.seq(e.ortho, e._ortho, e.para, e._para)
+    defs['DecorationE'] = nb.seq(L.at@(x,y))
 
     # nb.seq builds a formula that is a sequence of others.
     defs['IndexExponent'] = nb.seq(x*y, x^y, x**y, x@y, x@(y,sigma))    
