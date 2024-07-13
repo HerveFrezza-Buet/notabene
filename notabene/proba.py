@@ -14,6 +14,9 @@ def _cond_none(*elems):
                           lambda args : '\\left. {'+ str(args[0]) + '}\\; \\middle|\\; ' + str(basics.seq(*(args[1:]))) + '\\right.')
     
 
+def cond(*variables):
+    return _cond_none(*variables)
+
 def uniform(the_set):
     return basics.Symbol('{\\cal U}')@the_set
 

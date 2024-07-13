@@ -12,6 +12,7 @@ with nb.files.defs('001-006-probas.tex') as defs:
     law2    = nb.proba.normal(mu, sigma)
 
     ABC = nb.proba.joint(A, B, C)
+    A_BC = nb.proba.cond(A, B, C)
     
     defs['Laws'] = nb.seq(law1, law2)
 
@@ -22,6 +23,7 @@ with nb.files.defs('001-006-probas.tex') as defs:
 
 
     defs['Joint'] = ABC
+    defs['Cond'] = A_BC
 
     defs['CustomLaws'] = nb.seq(nb.proba.law(X),
                                 nb.proba.law_cond(X,Y,Z))
