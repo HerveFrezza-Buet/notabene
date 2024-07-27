@@ -5,9 +5,9 @@ i   = basics.Symbol('\\mathrm{i}')
 e   = basics.Symbol('\\mathrm{e}')
 infinity = basics.Symbol('\\infty')
 
-exp = basics.fun('\exp')
-min = basics.fun('\min')
-max = basics.fun('\max')
+exp = basics.fun('\\exp')
+min = basics.fun('\\min')
+max = basics.fun('\\max')
 
 def oplist(opstring, operands):
     return basics.Formula([basics.to(op) for op in operands],
@@ -61,15 +61,15 @@ def bracket(elem) :
 
 def brace(elem) : 
     return basics.Formula([elem],
-                          lambda args : '\\left\{ ' + str(basics.to(args[0])) + ' \\right\}')
+                          lambda args : '\\left\\{ ' + str(basics.to(args[0])) + ' \\right\\}')
 
 def left_system(elem) : 
     return basics.Formula([elem],
-                          lambda args : '\\left\{ ' + str(basics.to(args[0])) + ' \\right.')
+                          lambda args : '\\left\\{ ' + str(basics.to(args[0])) + ' \\right.')
 
 def right_system(elem) : 
     return basics.Formula([elem],
-                          lambda args : '\\left. ' + str(basics.to(args[0])) + ' \\right\}')
+                          lambda args : '\\left. ' + str(basics.to(args[0])) + ' \\right\\}')
 
 def sqrt(elem):
     return basics.Formula([elem],

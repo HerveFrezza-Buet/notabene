@@ -250,7 +250,7 @@ def geq(*args):
     return InfixOp('\\geq', *args)
 
 def approx(*args):
-    return InfixOp(Symbol('\simeq'), *args)
+    return InfixOp(Symbol('\\simeq'), *args)
 
 def text(msg):
     return Formula([],
@@ -354,7 +354,7 @@ class Layout(Formula):
                     else:
                         if len(l) > 1:
                             line += ' & '
-                        line += '\multicolumn{' + str(emptys + 1) + '}{' + a + '}{' + str(to(l[-1])) + '}'
+                        line += '\\multicolumn{' + str(emptys + 1) + '}{' + a + '}{' + str(to(l[-1])) + '}'
                     lines_str.append(line)
             res += ' \\\\ '.join(lines_str)
             res += ' \\end{array}'

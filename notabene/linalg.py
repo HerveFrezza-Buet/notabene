@@ -6,7 +6,7 @@ from . import math
 def __vec_of(expr):
     select = {None   :  expr,
               '->'   : basics.Formula([expr], lambda args : '\\vv{' + str(args[0]) + '}'),
-              'bold' : basics.Formula([expr], lambda args : '\mathbf{' + str(args[0]) + '}')}
+              'bold' : basics.Formula([expr], lambda args : '\\mathbf{' + str(args[0]) + '}')}
     return select[config.get('vector')]
 
 def vec(expr):
