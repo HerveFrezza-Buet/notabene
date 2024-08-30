@@ -34,6 +34,13 @@ with nb.files.defs('001-006-probas.tex') as defs:
     defs['DensitiesOf'] = nb.equals(nb.fun(nb.proba.density(nb.proba.joint(X,Y)))('x', 'y'),
                                     nb.fun(nb.proba.density_cond(Y, X == 'x'))('y') * nb.fun(nb.proba.density(X))('x'))
 
+    # You can trigger subscript mode for conditional probabilities
+    nb.config.push('proba cond', '_')
+    defs['SubscriptCond'] = nb.seq(nb.proba.cond(A, B, C),
+                                   nb.proba.law_cond(X,Y,Z),
+                                   nb.proba.density_cond(X,Y,Z))
+    nb.config.pop()
+
     defs['Follows'] = nb.proba.follows(X, law1)
     
     defs['Toss'] = nb.proba.toss_from('x', X)
