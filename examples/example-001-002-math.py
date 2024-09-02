@@ -55,6 +55,9 @@ with nb.files.defs('001-002-math.tex') as defs:
                                         [38, nb.text('otherwise')]))
     defs['System'] = nb.fun('f')(x) == eqs
     
+    defs['Braces'] = nb.seq(nb.math.overbrace( nb.seq(  1, ...,  99), nb.text('over')),
+                            nb.math.underbrace(nb.seq(100, ..., 199), nb.text('under')))
+    
     # This generates a latex cheetsheet that you can compile and display.
     defs.cheatsheet() 
 

@@ -79,3 +79,10 @@ def root(elem, power):
     return basics.Formula([elem, power],
                           lambda args : '\\sqrt[{' + str(basics.to(args[1])) + '}]{ ' + str(basics.to(args[0])) + '}')
     
+def overbrace(elem, arg) : 
+    return basics.Formula([elem, arg],
+                          lambda args : '\\overbrace{ ' + str(basics.to(args[0])) + '}^{' + str(basics.to(args[1])) + '}')
+
+def underbrace(elem, arg) : 
+    return basics.Formula([elem, arg],
+                          lambda args : '\\underbrace{ ' + str(basics.to(args[0])) + '}_{' + str(basics.to(args[1])) + '}')
