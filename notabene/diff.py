@@ -1,6 +1,20 @@
 from . import basics
 from . import math
 
+def dn(n, *elem):
+    dif = basics.Symbol('\\mathrm{d}')**basics.to(n)
+    return basics.cat(*[basics.cat(dif, e) for e in elem])
+
+def Dn(n, *elem):
+    dif = basics.Symbol('\\partial')**basics.to(n)
+    return basics.cat(*[basics.cat(dif, e) for e in elem])
+
+def dfracn(n, *elem):
+    return dn(n, elem[0]) / d(*(elem[1:]))**n
+
+def Dfracn(n, *elem):
+    return Dn(n, elem[0]) / D(*(elem[1:]))**n
+
 def d(*elem):
     dif = basics.Symbol('\\mathrm{d}')
     return basics.cat(*[basics.cat(dif, e) for e in elem])
@@ -14,6 +28,23 @@ def dfrac(*elem):
 
 def Dfrac(*elem):
     return D(elem[0]) / D(*(elem[1:]))
+
+
+def d2(*elem):
+    return dn(2, *elem)
+
+def D2(*elem):
+    return Dn(2, *elem)
+
+def dfrac2(*elem):
+    return dfracn(2, *elem)
+
+def Dfrac2(*elem):
+    return Dfracn(2,*elem)
+
+
+
+
 
 def dfun(*elem):
     return basics.fun(dfrac(*elem))
