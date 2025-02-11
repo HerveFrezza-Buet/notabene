@@ -32,7 +32,7 @@ def P(event):
     return basics.fun(_Psymb)(event)
 
 def P_cond(*elems):
-    return basics.cat(_Psymb, _cond(*elems))
+    return basics.fun(_Psymb)(_cond(*elems))
 
 def law(var):
     return _Psymb@var

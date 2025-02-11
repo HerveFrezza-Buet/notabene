@@ -115,7 +115,7 @@ class Formula:
     
     def mul(self, other):
         select = {None : Cat(self, other),
-                  '.' : InfixOp('.', self, other),
+                  '.' : InfixOp('{\\cdot}', self, other),
                   'x' : InfixOp('\\times', self, other)}
         return select[config.get('product')]
     def __mul__(self, other):
