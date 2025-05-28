@@ -30,7 +30,7 @@ class defs:
 
     def __enter__(self):
         self.f = open(self.path, 'w')
-        self.f.write(f'% This file is generated from the {Path(main.__file__).name} script.\n')
+        self.f.write(f'% This file is generated automatically from the {Path(main.__file__).name} script.\n')
         self.f.write('% The generation is enabled by the use of the notabene package.\n')
         self.f.write('\n')
         return self
