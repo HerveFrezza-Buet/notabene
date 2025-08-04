@@ -86,3 +86,7 @@ def overbrace(elem, arg) :
 def underbrace(elem, arg) : 
     return basics.Formula([elem, arg],
                           lambda args : '\\underbrace{ ' + str(basics.to(args[0])) + '}_{' + str(basics.to(args[1])) + '}')
+
+def compose(*funcs) :
+    return basics.fun(basics.InfixOp('\\circ', *[f.name for f in funcs]))
+    

@@ -32,6 +32,11 @@ with nb.files.defs('001-002-math.tex') as defs:
                               nb.math.bracket(x_2),
                               nb.math.left_system(x_2),
                               nb.math.right_system(x_2))
+
+    # Functions
+    f, g, h = nb.fun('f g h')
+    fgh = nb.math.compose(f, g, h)
+    defs["FunComp"] = nb.seq(f.name, g.name, h.name, fgh.name, fgh(x, x_2))
     
     # Sum and products
     sum1 = nb.math.sum(i==0, i <= n, 1/nb.math.fact(i) * x**i)
