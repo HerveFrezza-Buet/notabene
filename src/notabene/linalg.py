@@ -25,6 +25,12 @@ def dot(a, b):
                                       lambda args : '\\left< {' + str(args[0]) + '} \\middle| {' + str(args[1]) + '} \\right>')}
     return select[config.get('dot product')]
 
+def cross(a, b):
+    a, b = basics.to(a), basics.to(b)
+    select = {'x'   : basics.InfixOp('\\times', a, b),
+              '^'   : basics.InfixOp('\\wedge', a, b)}
+    return select[config.get('cross product')]
+
 def det(a):
     return basics.fun(basics.Symbol('\\mathrm{det}'))(a)
 

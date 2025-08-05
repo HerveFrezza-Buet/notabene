@@ -44,6 +44,16 @@ with nb.files.defs('001-007-linalg.tex') as defs:
 
     defs['DotProducts'] = nb.seq(dot1, dot2, dot3, dot4)
 
+    nb.config.push('cross product', 'x') # default 
+    cross1 = nb.linalg.cross(xb, ya)
+    nb.config.pop('cross product') # Could have been nb.config.pop()
+    
+    nb.config.push('cross product', '^') 
+    cross2 = nb.linalg.cross(xb, ya)
+    nb.config.pop()
+    
+    defs['CrossProducts'] = nb.seq(cross1, cross2)
+
     param = nb.linalg.vec('\\theta')
     phi   = nb.fun('\\varphi')
     defs['Linear'] = nb.linalg.dot(param, phi(x)) + b

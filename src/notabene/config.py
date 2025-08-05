@@ -3,6 +3,7 @@ mode = {'display style' : [False],
         'vector'        : [None ],
         'conjugate'     : ['*'  ],
         'dot product'   : [None ],
+        'cross product' : ['x'  ],
         'proba cond'    : [None ]}
 
 last_selected_mode = None
