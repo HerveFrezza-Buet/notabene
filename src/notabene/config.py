@@ -4,7 +4,8 @@ mode = {'display style' : [False],
         'conjugate'     : ['*'  ],
         'dot product'   : [None ],
         'cross product' : ['x'  ],
-        'proba cond'    : [None ]}
+        'proba cond'    : [None ],
+        'float'         : [None ]}
 
 last_selected_mode = None
 

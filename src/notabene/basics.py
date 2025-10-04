@@ -202,7 +202,18 @@ class Formula:
     
     def __ge__(self, other):
         return InfixOp('\\geq', self, other)
-    
+
+def _format_float(expr):
+    fmt = config.get('float')
+    if isinstance(fmt, str):
+        return eval("f'{expr:" + fmt + "}'")
+    if isinstance(fmt, int):
+        g_style = eval("f'{expr:." + str(fmt) + "g}'")
+        exp = g_style.split('e')
+        if len(exp) != 2:
+            return str(''.join(exp))
+        return exp[0] + '\\times 10^{' + exp[1].replace('+', '') + '}'
+    return str(expr)
 
 def to(expr):
     if isinstance(expr, type(None)):
@@ -214,8 +225,10 @@ def to(expr):
             return text('false')
     if isinstance(expr, type(...)):
         return Symbol('\\ldots')
-    if isinstance(expr, int) or isinstance(expr, float):
+    if isinstance(expr, int):
         return Symbol(str(expr))
+    if isinstance(expr, float):
+        return Symbol(_format_float(expr))
     if isinstance(expr, Formula):
         return expr
     if isinstance(expr, str):

@@ -21,6 +21,22 @@ bold          = nb.bf('bold')  # builds a formula using \mathbf
 with nb.files.defs('001-001-basics.tex') as defs:
     nb.config.push('display style', True) # We set the displaystyle
     defs.prefix = 'ex'
+
+    # Formatting floating values.
+    pi_1   = 3.1415926544
+    pi_100 = 100*pi_1
+    big_pi = float(3141592653589793238)
+    small_pi = pi_1 * 1e-12
+
+    # We will build formulas with different float formats.
+    float_configs = [('FloatsA', None),  # default
+                     ('FloatsB', '.2f'), # the python formatting 
+                     ('FloatsC', '.3g'), # another python formatting.
+                     ('FloatsD',     3)] # Latex compatible scientific notation.
+    for formula_name, float_style in float_configs:
+        nb.config.push('float', float_style)
+        defs[formula_name] = nb.seq(0., 1., pi_1, pi_100, big_pi, small_pi, -pi_100)
+        nb.config.pop()
     
     defs['CalL'] = L
     defs['Mathrm'] = roman
