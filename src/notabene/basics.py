@@ -212,7 +212,7 @@ def _format_float(expr):
         exp = g_style.split('e')
         if len(exp) != 2:
             return str(''.join(exp))
-        return exp[0] + '\\times 10^{' + exp[1].replace('+', '') + '}'
+        return exp[0] + '\\times 10^{' + str(int(exp[1])) + '}'
     return str(expr)
 
 def to(expr):
