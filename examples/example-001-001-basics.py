@@ -35,7 +35,7 @@ with nb.files.defs('001-001-basics.tex') as defs:
                      ('FloatsD',     3)] # Latex compatible scientific notation.
     for formula_name, float_style in float_configs:
         nb.config.push('float', float_style)
-        defs[formula_name] = nb.seq(0., 1., pi_1, pi_100, big_pi, small_pi, -pi_100)
+        defs[formula_name] = nb.seq(0., 1., pi_1, pi_100, big_pi, small_pi, -pi_100, -small_pi)
         nb.config.pop()
     
     defs['CalL'] = L
