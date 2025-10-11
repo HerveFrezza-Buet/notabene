@@ -8,6 +8,7 @@ from . import logical
 from . import proba
 from . import linalg
 from . import algo
+from . import phantom
 
 from .basics import arg
 from .basics import to
