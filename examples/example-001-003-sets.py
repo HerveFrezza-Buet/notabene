@@ -47,7 +47,7 @@ with nb.files.defs('001-003-sets.tex') as defs:
     defs['InterIter'] = nb.seq(nb.sets.Inter(i==1, n, x@i),
                                nb.sets.Inter(nb.sets.subset(i,x), i))
 
-    cplx = nb.to('a') + i*nb.to('b')
+    cplx = nb.to('a') + nb.math.i*nb.to('b')
     defs['ComplexRe'] = nb.seq(nb.re(cplx), cplx.re)
     defs['ComplexIm'] = nb.seq(nb.im(cplx), cplx.im)
     defs['ComplexModule'] = nb.seq(nb.module(cplx), cplx.module)
