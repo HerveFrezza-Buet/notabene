@@ -129,11 +129,31 @@ with nb.files.defs('001-001-basics.tex') as defs:
     # Layout arrange formulas as tabular. First is 'r', 'l', 'c' for
     # alignement, then the lines come.
     layout = nb.layout('c',
+                       [x, y, z],
                        [n, n+1, n+2],
                        [x, x**2],
                        [pi],
                        [1, None, 3]) # None creates an empty slot.
-    defs['Layout'] = layout
+    defs['LayoutA'] = nb.to([layout]) # We put it between parentheses.
+
+    # Let us address spacing issues in layouts
+    f = x/y
+    layout = nb.layout('c',
+                       [x, y, z],
+                       [f, f, f],
+                       [f, f, f],
+                       [x, y, z]) # see latex rendering for line spacing issues.
+    defs['LayoutB'] = nb.to([layout]) # We put it between parentheses.
+
+    layout = nb.layout('c',
+                       ([x, y, z], ' 6pt'), # we increase linespace after this line.
+                       ([f, f, f], '12pt'), # we increase linespace after this line.
+                       ([f, f, f], ' 6pt'), # we increase linespace after this line.
+                       [x, y, z]) # extra linespace would be ignored for last line.
+    
+    defs['LayoutC'] = nb.to([layout]) # We put it between parentheses.
+    
+    
     
     # This generates a latex cheetsheet that you can compile and display.
     defs.add_preamble('\\usepackage{color}') # You can add lines in the cheetsheet preamble.

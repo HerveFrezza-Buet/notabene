@@ -351,10 +351,10 @@ def kat(*exprs):
 class Layout(Formula):
     def __init__(self, align, lines):
         def make_table(a, ls):
-            max_length = max([len(l) for l in ls])
+            max_length = max([len(l[0]) for l in ls])
             res = '\\begin{array}{' + a*max_length + '} '
             lines_str = []
-            for l in ls:
+            for l, sep in ls:
                 if len(l) == 0:
                     lines_str.append(' & ' * (max_length - 1))
                 elif max_length == 1:
@@ -368,15 +368,27 @@ class Layout(Formula):
                         if len(l) > 1:
                             line += ' & '
                         line += '\\multicolumn{' + str(emptys + 1) + '}{' + a + '}{' + str(to(l[-1])) + '}'
-                    lines_str.append(line)
-            res += ' \\\\ '.join(lines_str)
-            res += ' \\end{array}'
+                    lines_str.append((line, sep))
+            for l, sep in lines_str[:-1]:
+                res += l + ' \\\\'
+                if sep != None:
+                    res += f'[{sep}]'
+                res += ' '
+            # we ignore last line spacing.
+            l, _ = lines_str[-1]
+            res += l + ' \\end{array}'
             return res
         def list_of_line(l):
             if isinstance(l, list) :
-                return l
+                return (l, None)
+            elif isinstance(l, tuple) and len(l) == 2:
+                ll, sep = l
+                if isinstance(ll, list):
+                    return (ll, sep)
+                else:
+                    return ([ll], sep)
             else:
-                return [l]
+                return ([l], None)
         super().__init__([list_of_line(l) for l in lines],
                          lambda args : make_table(align, args))
     
