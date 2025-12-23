@@ -25,6 +25,9 @@ def uniform(the_set):
 def normal(mu, sigma):
     return basics.fun(basics.Symbol('{\\cal N}'))(mu, sigma)
 
+def bernouilli(p):
+    return basics.fun(basics.Symbol('{\\cal B}'))(p)
+
 def joint(*elems):
     return basics.cat(*elems)
 

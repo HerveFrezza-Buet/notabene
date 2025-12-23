@@ -1,6 +1,6 @@
 import notabene as nb
 
-mu, sigma, X, Y, Z, A, B, C = nb.to('\\mu \\sigma X Y Z A B C')
+mu, sigma, p, X, Y, Z, A, B, C = nb.to('\\mu \\sigma p X Y Z A B C')
 
 
 with nb.files.defs('001-006-probas.tex') as defs:
@@ -10,11 +10,12 @@ with nb.files.defs('001-006-probas.tex') as defs:
     the_set = nb.sets.range_cc(0, 1)
     law1    = nb.proba.uniform(the_set)
     law2    = nb.proba.normal(mu, sigma)
+    law3    = nb.proba.bernouilli(p)
 
     ABC = nb.proba.joint(A, B, C)
     A_BC = nb.proba.cond(A, B, C)
     
-    defs['Laws'] = nb.seq(law1, law2)
+    defs['Laws'] = nb.seq(law1, law2, law3)
 
     defs['Proba'] = nb.seq(nb.proba.P(nb.sets.isin(X, A)),
                            nb.proba.P_cond(nb.sets.isin(X, A),
