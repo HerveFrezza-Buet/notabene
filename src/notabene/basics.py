@@ -358,7 +358,7 @@ class Layout(Formula):
                 if len(l) == 0:
                     lines_str.append(' & ' * (max_length - 1))
                 elif max_length == 1:
-                    lines_str.append(str(to(l[0])))
+                    lines_str.append((str(to(l[0])), sep))
                 else:
                     emptys = max_length - len(l)
                     line = ' & '.join([str(to(e)) for e in l[:-1]])
