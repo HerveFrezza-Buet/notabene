@@ -352,7 +352,8 @@ class Layout(Formula):
     def __init__(self, align, lines):
         def make_table(a, ls):
             max_length = max([len(l[0]) for l in ls])
-            res = '\\begin{array}{' + a*max_length + '} '
+            aligns = a + a[-1]*(max_length  - len(a))
+            res = '\\begin{array}{' + aligns*max_length + '} '
             lines_str = []
             for l, sep in ls:
                 if len(l) == 0:
@@ -367,7 +368,7 @@ class Layout(Formula):
                     else:
                         if len(l) > 1:
                             line += ' & '
-                        line += '\\multicolumn{' + str(emptys + 1) + '}{' + a + '}{' + str(to(l[-1])) + '}'
+                        line += '\\multicolumn{' + str(emptys + 1) + '}{' + aligns[0] + '}{' + str(to(l[-1])) + '}'
                     lines_str.append((line, sep))
             for l, sep in lines_str[:-1]:
                 res += l + ' \\\\'
@@ -466,11 +467,13 @@ class IndexExp(Formula):
         super().__init__([to(expr), to(index), to(exponent)],
                          lambda args : '{' + str(args[0]) + '}_{' + str(args[1]) + '}^{' + str(args[2]) + '}')
 
+
+define_symbol = Symbol('\\stackrel{\\mathrm{def}}{=}')
+
 def define(name, *expr):
-    symb = Symbol('\\stackrel{\\mathrm{def}}{=}')
     defs = [name]
     for e in expr:
-        defs += [symb, e]
+        defs += [define_symbol, e]
     return kat(*defs)
 
 

@@ -127,8 +127,10 @@ with nb.files.defs('001-001-basics.tex') as defs:
     
 
     # Layout arrange formulas as tabular. First is 'r', 'l', 'c' for
-    # alignement, then the lines come.
-    layout = nb.layout('c',
+    # alignement, then the lines come. Here, we have at most 3 elements
+    # in a line, so 'c' stands for 'ccc'. If the alignment string is
+    # too short, it is extended with its last element.
+    layout = nb.layout('c', 
                        [x, y, z],
                        [n, n+1, n+2],
                        [x, x**2],
@@ -138,7 +140,7 @@ with nb.files.defs('001-001-basics.tex') as defs:
 
     # Let us address spacing issues in layouts
     f = x/y
-    layout = nb.layout('c',
+    layout = nb.layout('c', 
                        [x, y, z],
                        [f, f, f],
                        [f, f, f],

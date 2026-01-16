@@ -58,7 +58,11 @@ with nb.files.defs('001-002-math.tex') as defs:
                                         [x+1, nb.text('if'), x > 0],
                                         [x-1, nb.text('if'), x < 0],
                                         [38, nb.text('otherwise')]))
-    defs['System'] = nb.fun('f')(x) == eqs
+    defs['SystemA'] = nb.fun('f')(x) == eqs
+
+    defs['SystemB'] = nb.math.left_system(nb.layout('rcl',
+                                                    [nb.math.pi, nb.define_symbol, 3.141592654],
+                                                    [nb.to([x+1])**2, '=', x**2 + 2*x + 1]))
     
     defs['Braces'] = nb.seq(nb.math.overbrace( nb.seq(  1, ...,  99), nb.text('over')),
                             nb.math.underbrace(nb.seq(100, ..., 199), nb.text('under')))
