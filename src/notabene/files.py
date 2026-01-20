@@ -48,8 +48,11 @@ class defs:
     def __arg_print(self, num):
         return ''.join(['\\{' + str(i+1) + '\\}' for i in range(num)])
 
-    def cheatsheet(self):
-        name = Path(self.path.stem + '-cheatsheet.tex')
+    def cheatsheet(self, filename=None):
+        if filename == None:
+            name = Path(self.path.stem + '-cheatsheet.tex')
+        else:
+            name = Path(filename)
         with open(name, 'w') as f:
             f.write('\\documentclass[a4paper, 10pt]{article}\n')
             f.write('\\usepackage[margin=20mm]{geometry}\n')
