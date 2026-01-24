@@ -97,7 +97,7 @@ with nb.files.defs('001-001-basics.tex') as defs:
     # Nice attributes are available
     e = nb.to([x+y])
     defs['DecorationA'] = nb.seq(e.bar, e.hat, e.tilde)
-    defs['DecorationB'] = nb.seq(e.inv, e.T, e.star, e.aster, e.plus, e.minus, e.dag, e.ddag)
+    defs['DecorationB'] = nb.seq(e.inv, e.T, e.star, e.aster, e.circle, e.plus, e.minus, e.dag, e.ddag)
     defs['DecorationC'] = nb.seq(e.prime, e.dprime, e.trprime)
     defs['DecorationD'] = nb.seq(e.ortho, e._ortho, e.para, e._para)
     defs['DecorationE'] = nb.seq(L.at@(x,y))

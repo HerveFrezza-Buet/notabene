@@ -33,6 +33,8 @@ class Formula:
             return At(self)
         if name == 'star':
             return Exponent(self, Symbol('\\star'))
+        if name == 'circle':
+            return Exponent(self, Symbol('\\circ'))
         if name == 'aster':
             return Exponent(self, Symbol('*'))
         if name == 'plus':
