@@ -8,13 +8,18 @@ def insert_dsp():
 
 class Formula:
     def __init__(self, args, to_latex):
-        self.args = [to(arg) for arg in args]
+        self.args = args
         self.to_latex = to_latex
         self.max_argnum = 0
         for arg in self.args:
-            if isinstance(arg, Formula) :
-                self.max_argnum = max(self.max_argnum, arg.max_argnum)
-        print(f'{self.max_argnum} : {self}')
+            self.max_argnum = max(self.max_argnum, Formula._max_argnum(arg))
+
+    def _max_argnum(arg):
+        if isinstance(arg, Formula) :
+            return arg.max_argnum
+        if isinstance(arg, list) or isinstance(arg, tuple):
+            return max([Formula._max_argnum(a) for a in arg])
+        return 0;
         
     def __str__(self):
         return self.to_latex(self.args)
